@@ -16,7 +16,6 @@ export default {
   }, 
   
   getFetch(val) {
-    // this.queryValue = val; 
     if (val && val.length > 0) {
       this.queryValue = val
     } 
