@@ -2,14 +2,9 @@
   .header {
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url('./images/hed.jpg');
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56)));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
   }
-
   .container.nav-container {
     position: relative;
     width: 882px;
@@ -17,17 +12,23 @@
     margin-left: auto;
     margin-right: auto;
   }
-
   .logo-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
-
   .input-container {
     width: 100%;
     height: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     text-align: center;
     position: relative;
     margin-top: 40px;
@@ -36,7 +37,6 @@
     width: 336px;
     position: relative;
   }
-
   .header-input {
     border: 0;
     border-bottom: 0.5px solid;
@@ -47,34 +47,29 @@
     color: white;
     outline: none;
   }
-
   .input-icon {
     position: absolute;
     right: 0;
     top: 4.5px;
   }
-
   .logo-text {
     color: white;
     margin-left: 10px;
     font-weight: 500;
     font-size: 30px;
+    -webkit-transition: 0.4s;
     transition: 0.4s;
     text-decoration: none;
   }
 }
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .header {
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url('./images/hedtab.jpg');
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url("./images/hedtab.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./images/hedtab.jpg");
   }
-
   .container.nav-container {
     position: relative;
     width: 618px;
@@ -82,16 +77,22 @@
     margin-left: auto;
     margin-right: auto;
   }
-
   .logo-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .input-container {
     height: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     text-align: center;
     position: relative;
     margin-top: 40px;
@@ -100,7 +101,6 @@
     width: 336px;
     position: relative;
   }
-
   .header-input {
     border: 0;
     border-bottom: 0.5px solid;
@@ -111,13 +111,11 @@
     color: white;
     outline: none;
   }
-
   .input-icon {
     position: absolute;
     right: 0;
     top: 4.5px;
   }
-
   .logo-text {
     color: white;
     margin-left: 10px;
@@ -130,21 +128,15 @@
   .header {
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url('./images/hedmob.jpg');
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url("./images/hedmob.jpg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url("./images/hedmob.jpg");
   }
-
   .container.nav-container {
     width: 280px;
     height: 230px;
     margin-left: auto;
     margin-right: auto;
   }
-
   .input-container {
     position: relative;
     margin-top: 40px;
@@ -164,7 +156,6 @@
     color: white;
     outline: none;
   }
-
   .logo-text {
     color: white;
     display: none;
@@ -173,28 +164,41 @@
 
 .header-container {
   padding-top: 46px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .nav-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 0;
   margin: 0;
 }
+
 .nav-list .link {
   position: relative;
   font-size: 12px;
   padding-bottom: 3px;
   color: white;
+  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .nav-item {
   padding-top: 10px;
 }
+
 .nav-item:not(:last-child) {
   margin-right: 40px;
 }
@@ -211,8 +215,20 @@
   border-radius: 0px;
 }
 
+.header-input::-webkit-input-placeholder {
+  color: #999797;
+}
+
+.header-input:-ms-input-placeholder {
+  color: #999797;
+}
+
+.header-input::-ms-input-placeholder {
+  color: #999797;
+}
+
 .header-input::placeholder {
-  color: rgb(153, 151, 151);
+  color: #999797;
 }
 
 .library-link {
@@ -230,8 +246,10 @@
   font-size: 12px;
   padding-bottom: 3px;
   color: white;
+  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
+
 .library-link.current::after {
   position: absolute;
   content: '';
@@ -249,18 +267,27 @@
 .library-link:hover,
 .logo-text:hover {
   color: #ff6b01;
+  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .logo-link:hover .logo-svg {
   fill: #ff6b01;
+  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
+
 .logo-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-decoration: none;
 }
+
 .link-current {
   text-decoration: none;
 }
+/*# sourceMappingURL=header.css.map */

@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "main.scss",
+        "../components/homePage.scss",
+        "../components/myFilmLibraryPage.scss",
+        "../components/detailsPage.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
