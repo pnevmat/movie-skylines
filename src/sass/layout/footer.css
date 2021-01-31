@@ -1,1 +1,64 @@
-/* No CSS *//*# sourceMappingURL=footer.css.map */
+@charset "UTF-8";
+/* ФУТЕР*/
+.footer {
+  background: #f7f7f7;
+}
+
+.footer-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 28px;
+  margin-top: 100px;
+}
+
+.icon-heart {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer-container {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .footer-container {
+    width: 618px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 16px;
+    line-height: 18.75px;
+  }
+  ​ .footer-container:first-child {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer-container {
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+/*# sourceMappingURL=footer.css.map */
