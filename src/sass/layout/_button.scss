@@ -8,9 +8,11 @@
   line-height: 16px;
   font-weight: 500;
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 
   outline: 0px;
+  cursor: pointer;
+  transition: background 2s;
 
   &--solid {
     background-color: #ff6b01;
@@ -21,10 +23,5 @@
     background-color: #fff;
     border: 1px solid #000;
     color: #000;
-  }
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
   }
 }
