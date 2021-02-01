@@ -9,7 +9,6 @@ export default {
   pageNumber: 1,
   perPage: 20,
   language: 'en-US',
-  // sort_by: created_at.desc,
   
   get queryValue() {
     return this.query;
