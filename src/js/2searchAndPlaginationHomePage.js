@@ -18,11 +18,11 @@ export default {
     return (this.query = val);
   }, 
   
-  fetchFilms(val) {
-    if (val && val.length > 0) {
-      this.queryValue = val
+  fetchFilms(inputValue, pageNumber) {
+    if (inputValue && inputValue.length > 0) {
+      this.queryValue = inputValue;
     } 
-    const params = `search/movie?api_key=${this.API_KEY}&language=${this.language}&page=${this.pageNumber}&include_adult=false&query=${this.queryValue}`;
+    const params = `search/movie?api_key=${this.API_KEY}&language=${this.language}&page=${pageNumber}&include_adult=false&query=${this.queryValue}`;
     const url = `${this.baseUrl}${params}`;
     return fetch(url)
     .then((res) => res.json())
@@ -30,14 +30,21 @@ export default {
       return results})
   },
   
+
+
+
+
+
+
+
   fetchGenres() {
+    let genres = '';
     const params = `genre/movie/list?api_key=${this.API_KEY}&language=${this.language}&page=${this.page}`;
     const url = `${this.baseUrl}${params}`;
     return fetch(url)
     .then((res) => res.json())
     .then(({ data }) => {
       data.forEach(({data}) => {
-        const genres = '';
         genres += data[i].name;
         console.log(genres);
         return genres;
@@ -45,13 +52,15 @@ export default {
     });
   },
 
-  fetchPopulars() {
+  fetchPopularsMoviesList(val) {
+    this.pageNumber = val;
     const params = `movie/popular?api_key=${this.API_KEY}&language=${this.language}&page=${this.page}`;
     const url = `${this.baseUrl}${params}`;
     return fetch(url)
     .then((res) => res.json())
     .then(({ results }) => {
       return results})
+    
   },
 
 };
@@ -70,7 +79,7 @@ function searchFilms(e) {
     return;
   }; 
   // apiObject.resetPage();
-  apiObject.fetchFilms(inputValue).then(toMakeMarkup).catch(notify.errorMessage); 
+  apiObject.fetchFilms(inputValue).then(createCardFunc).catch(notify.errorMessage); 
   // input.value = "";
   // gallery.innerHTML = '';
 
