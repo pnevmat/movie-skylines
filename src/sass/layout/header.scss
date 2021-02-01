@@ -1,0 +1,266 @@
+@media screen and (min-width: 1024px) {
+  .header {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('./images/hed.jpg');
+  }
+
+  .container.nav-container {
+    position: relative;
+    width: 882px;
+    height: 230px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .logo-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-container {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin-top: 40px;
+  }
+  .input-wrap {
+    width: 336px;
+    position: relative;
+  }
+
+  .header-input {
+    border: 0;
+    border-bottom: 0.5px solid;
+    height: 20px;
+    width: 336px;
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    outline: none;
+  }
+
+  .input-icon {
+    position: absolute;
+    right: 0;
+    top: 4.5px;
+  }
+
+  .logo-text {
+    color: white;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 30px;
+    transition: 0.4s;
+    text-decoration: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .header {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('./images/hedtab.jpg');
+  }
+
+  .container.nav-container {
+    position: relative;
+    width: 618px;
+    height: 230px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .logo-header {
+    display: flex;
+
+    align-items: center;
+  }
+  .input-container {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin-top: 40px;
+  }
+  .input-wrap {
+    width: 336px;
+    position: relative;
+  }
+
+  .header-input {
+    border: 0;
+    border-bottom: 0.5px solid;
+    height: 20px;
+    width: 336px;
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    outline: none;
+  }
+
+  .input-icon {
+    position: absolute;
+    right: 0;
+    top: 4.5px;
+  }
+
+  .logo-text {
+    color: white;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('./images/hedmob.jpg');
+  }
+
+  .container.nav-container {
+    width: 280px;
+    height: 230px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .input-container {
+    position: relative;
+    margin-top: 40px;
+  }
+  .input-icon {
+    position: absolute;
+    right: 0;
+    top: 4.5px;
+  }
+  .header-input {
+    border: 0;
+    border-bottom: 0.5px solid;
+    height: 20px;
+    width: 280px;
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    outline: none;
+  }
+
+  .logo-text {
+    color: white;
+    display: none;
+  }
+}
+
+.header-container {
+  padding-top: 46px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+.nav-list .link {
+  position: relative;
+  font-size: 12px;
+  padding-bottom: 3px;
+  color: white;
+  transition: 0.4s;
+}
+
+.nav-item {
+  padding-top: 10px;
+}
+.nav-item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.link.current::after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ff6b08;
+  left: 0;
+  bottom: 0;
+  border-radius: 0px;
+}
+
+.header-input::placeholder {
+  color: rgb(153, 151, 151);
+}
+
+.library-link {
+  border: none;
+  background: transparent;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  outline: none;
+}
+
+.nav-list .library-link {
+  position: relative;
+  font-size: 12px;
+  padding-bottom: 3px;
+  color: white;
+  transition: 0.4s;
+}
+.library-link.current::after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ff6b08;
+  left: 0;
+  bottom: 0;
+  border-radius: 0px;
+  text-decoration: none;
+}
+
+.link:hover,
+.library-link:hover,
+.logo-text:hover {
+  color: #ff6b01;
+  transition: 0.4s;
+}
+
+.logo-link:hover .logo-svg {
+  fill: #ff6b01;
+  transition: 0.4s;
+}
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.link-current {
+  text-decoration: none;
+}
