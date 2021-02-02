@@ -264,3 +264,12 @@
 .link-current {
   text-decoration: none;
 }
+
+span[class=error] {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 16px;
+  color: #FF001B;
+}
