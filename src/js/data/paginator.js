@@ -1,13 +1,7 @@
 // import { pagination } from 'pagination';
 import api from '../2searchAndPlaginationHomePage';
 
-const paginationBtn = document.querySelector('.paginator');
-paginationBtn.addEventListener('click', () => {
-  e.preventDefault();
-  api.fetchFilms(query, pageNumber);
-  setPage();
-  onPaginator();
-});
+ 
 
 export default {
   prelink: '/',

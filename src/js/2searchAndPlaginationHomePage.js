@@ -2,7 +2,11 @@ import notify from './data/pnotify';
 // import { paginator } from "pagination";
 // import filmGallaryItem from '../templates/filmGallaryItem.hbs';
 const gallery = document.querySelector('.film-gallery');
-const paginatorBtn = document.querySelector('.paginator-page');
+const paginationBtn = document.querySelector('.paginator');
+const paginator = new pagination.SearchPaginator({prelink:'/', current: 1, rowsPerPage: 9, totalResult: 1000});
+
+paginationBtn.addEventListener('click', onLoadMore);
+
 
 export default {
   baseUrl: 'https://api.themoviedb.org/3/',
@@ -33,9 +37,10 @@ export default {
     return fetch(url)
     .then((res) => res.json())
     .then((result) => {
-      createCardFunc(result);
+      // createCardFunc(result);
       renderFilms = result.results;
-      return renderFilms; 
+      // return renderFilms; 
+      return result;   
     });
   },
  //--------- --------------------------------------------------------------------------------------------
@@ -62,9 +67,10 @@ export default {
     .then((res) => res.json())
     .then((results ) => results)
     .then((result) => {
-      createCardFunc(result);
+      // createCardFunc(result);
       renderFilms = result.results;
-      return renderFilms;    
+      // return renderFilms; 
+      return result;   
     });
   },
   
@@ -83,14 +89,30 @@ function createCardFunc(result) {
     notify.noticeMessage();
     return;
   };
-    const card = filmDetails(result);
+    const card = filmDetails(result.results);
     gallery.insertAdjacentHTML("beforeend", card);
     window.scrollTo({
       top: document.documentElement.scrollHeight, behavior: 'smooth'
     });
-    // onLoadMore();
-    paginator();
+    toShowBtn();
+    onLoadMore();
+
     return gallery;
+};
+
+function onLoadMore(event) {
+  event.preventDefault();
+  api.setPage();
+  paginator.getPaginationData('/', 1, 9, 943);
+  api.fetchFilms(null).then(createCardFunc);
+};
+
+function toShowBtn(result) {
+  if (result.results.length > 9) {
+    console.log(result.results.length);
+    return paginationBtn.classList.remove('hidden');
+  } 
+  return paginationBtn.classList.add('hidden'); 
 };
 
 
