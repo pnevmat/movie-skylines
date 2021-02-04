@@ -1,7 +1,7 @@
 .movie {
   display: block;
   width: 280px;
-  margin-top: 230px;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px 20px 40px 20px;
@@ -12,7 +12,7 @@
 
   &__cover {
     width: 280px;
-    height: 416px;
+    height: 100%;
     border-radius: 5px;
   }
 
@@ -101,12 +101,12 @@
   .movie {
     width: 618px;
     display: flex;
-    margin-top: 230px;
+    margin-top: 60px;
     margin-bottom: 60px;
 
     &__cover {
       width: 294px;
-      height: 416px;
+      height: 100%;
       margin-right: 30px;
     }
 
@@ -137,12 +137,12 @@
   .movie {
     width: 882px;
     display: flex;
-    margin-top: 230px;
+    margin-top: 60px;
     margin-bottom: 60px;
 
     &__cover {
       width: 426px;
-      height: 514px;
+      height: 100%;
       margin-right: 30px;
     }
 
