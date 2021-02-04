@@ -18,13 +18,13 @@
     </li>
     <li>
       <span>Genre</span>
-      <span class="movie__characteristics--black">{{#each this.genres}}{{name}}{{/each}}</span>
+      <span class="movie__characteristics--black">{{#each this.genres}}{{name}} {{/each}}</span>
     </li>
   </ul>
   <h2 class="movie__title movie__title--h2">About</h2>
   <p class="movie__description">{{overview}}</p>
   <div class="button-container">
-    <button class="button button--solid">Add to watched</button>
-    <button class="button button--hollow">Add to queue</button>
+    <button class="button button--solid js-watched"></button>
+    <button class="button button--hollow js-queue"></button>
   </div>
 </div>
