@@ -1,4 +1,4 @@
-import { pagination } from 'pagination';
+// import { pagination } from 'pagination';
 import api from '../2searchAndPlaginationHomePage';
 
 const paginationBtn = document.querySelector('.paginator');

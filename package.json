@@ -57,7 +57,6 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.1",
     "imagemin-svgo": "^8.0.0",
-    "pagination": "^0.4.6",
     "pnotify": "^5.2.0"
   }
 }

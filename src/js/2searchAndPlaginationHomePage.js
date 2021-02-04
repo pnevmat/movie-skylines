@@ -1,5 +1,5 @@
 import notify from './data/pnotify';
-import { paginator } from "pagination";
+// import { paginator } from "pagination";
 // import filmGallaryItem from '../templates/filmGallaryItem.hbs';
 const gallery = document.querySelector('.film-gallery');
 const paginatorBtn = document.querySelector('.paginator-page');
