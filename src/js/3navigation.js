@@ -5,7 +5,7 @@ const homeLink = document.querySelector('.home-link');
 const homePageLogo = document.querySelector('.link-logo');
 // взять класс у андрея
 const libraryPage = document.querySelector('.library-page'); 
-const LibraryBtn = document.querySelector('.myLibraryBtn');
+const libraryBtn = document.querySelector('.myLibraryBtn');
 
 libraryLink.addEventListener('click', () => {
     activeLibraryPage();
@@ -20,13 +20,13 @@ libraryLink.addEventListener('click', activeLibraryPage);
 
 function activeHomePage() {
   input = '';
-    dischargePaginationAndCreateMarkup();
+    activeInput();
   header.classList.add('header');
   header.classList.remove('header');
   libraryLink.classList.remove('current');
   homeLink.classList.add('current');
   libraryPage.classList.add('library');  
-  LibraryBtn.classList.add('library');
+  libraryBtn.classList.add('library');
   localStorage.setItem('activePage', 'activeHomePage');
 }
 
@@ -34,7 +34,7 @@ function activeLibraryPage() {
   header.classList.remove('header');
   header.classList.add('header');
   libraryLink.classList.add('current');
-  LibraryBtn.classList.remove('library');
+  libraryBtn.classList.remove('library');
   localStorage.setItem('activePage', 'activeLibraryPage');
       
 }
@@ -43,7 +43,7 @@ function activeDetalilsPage() {
   header.classList.remove('header');
   header.classList.add('header');
   libraryLink.classList.add('current');
-  LibraryBtn.classList.remove('library');
+  libraryBtn.classList.remove('library');
   localStorage.setItem('activePage', 'activeLibraryPage');
       
 }
