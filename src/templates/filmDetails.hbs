@@ -1,30 +1,30 @@
-<img src="{{ПУТЬ}}" alt="{{НАЗВАНИЕ}}" class="movie__cover">
+<img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" class="movie__cover">
 <div class="movie__containerInfo">
-  <h1 class="movie__title">{{TITLE}}</h1>
+  <h1 class="movie__title">{{title}}</h1>
   <ul class="movie__characteristics">
     <li>
       <span>Vote / Votes</span>
-      <span class="movie__characteristics--orange">{{РЕЙТИНГ}}</span>
+      <span class="movie__characteristics--orange">{{vote_average}}</span>
       /
-      <span class="movie__characteristics--grey">{{ГОЛОСОВ}}</span>
+      <span class="movie__characteristics--grey">{{vote_count}}</span>
     </li>
     <li>
       <span>Popularity</span>
-      <span class="movie__characteristics--black">{{ПОПУЛЯРНОСТЬ}}</span>
+      <span class="movie__characteristics--black">{{popularity}}</span>
     </li>
     <li>
       <span>Original Title</span>
-      <span class="movie__characteristics--black">{{TITLE or ORIGINAL TITLE}}</span>
+      <span class="movie__characteristics--black">{{original_title}}</span>
     </li>
     <li>
       <span>Genre</span>
-      <span class="movie__characteristics--black">{{ЖАНР}}</span>
+      <span class="movie__characteristics--black">{{#each this.genres}}{{name}}{{/each}}</span>
     </li>
   </ul>
   <h2 class="movie__title movie__title--h2">About</h2>
-  <p class="movie__description">{{DESCRIPTION}}</p>
+  <p class="movie__description">{{overview}}</p>
   <div class="button-container">
-    <button class="button button--solid">ADD TO WATCHED</button>
-    <button class="button button--hollow">ADD TO QUEUE</button>
+    <button class="button button--solid">Add to watched</button>
+    <button class="button button--hollow">Add to queue</button>
   </div>
 </div>
