@@ -1,4 +1,4 @@
-import movieGalleryMarkup from '../templates/library.hbs'
+import movieGalleryMarkup from '../templates/myLibrary.hbs'
 // import json from './film.json'
 
 

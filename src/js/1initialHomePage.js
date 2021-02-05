@@ -1,5 +1,5 @@
 `use strict`;
-import filmGalleryTpl from './filmGalleryItem.hbs';
+import filmGalleryTpl from '../templates/filmGalleryItem.hbs';
 
 const apiService = {
   baseUrl: 'https://api.themoviedb.org/3/',
