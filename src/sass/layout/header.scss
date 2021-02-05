@@ -184,7 +184,7 @@
   padding: 0;
   margin: 0;
 }
-.nav-list .link {
+.nav-list .home-link {
   position: relative;
   font-size: 12px;
   padding-bottom: 3px;
@@ -199,7 +199,7 @@
   margin-right: 40px;
 }
 
-.link.current::after {
+.home-link.current::after {
   position: absolute;
   content: '';
   display: block;
@@ -245,7 +245,7 @@
   text-decoration: none;
 }
 
-.link:hover,
+.home-link:hover,
 .library-link:hover,
 .logo-text:hover {
   color: #ff6b01;
@@ -266,13 +266,13 @@
 }
 
 //------------------------------------------------------------------------------------------
-span[class=error] {
+span[class='error'] {
   display: flex;
   text-align: center;
   align-items: center;
   font-size: 14px;
   line-height: 16px;
-  color: #FF001B;
+  color: #ff001b;
 }
 
 .myLibraryNavigationBox_js {
@@ -280,7 +280,7 @@ span[class=error] {
   justify-content: center;
 }
 
-.myLibraryNavigationList{
+.myLibraryNavigationList {
   display: inline-flex;
   box-sizing: border-box;
   list-style: none;
@@ -306,7 +306,7 @@ span[class=error] {
 }
 
 .myLibraryBtn:hover {
-  background-color: #FF6B01;
+  background-color: #ff6b01;
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
   cursor: pointer;
   border: none;
