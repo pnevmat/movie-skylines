@@ -1,3 +1,10 @@
+.logo-svg {
+  stroke: #818181;
+}
+.input-icon {
+  stroke: #fff;
+}
+
 @media screen and (min-width: 1024px) {
   .header {
     background-repeat: no-repeat;
@@ -52,6 +59,7 @@
     position: absolute;
     right: 0;
     top: 4.5px;
+    stroke: #ffff;
   }
 
   .logo-text {
