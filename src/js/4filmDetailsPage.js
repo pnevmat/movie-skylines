@@ -16,7 +16,6 @@ backdropRef.addEventListener('click', backdropClickHandler);
 let selectFilm = {};
 
 
-
 //create modal content with template
 function createMovieDetails(e) {
   
@@ -38,56 +37,30 @@ function createMovieDetails(e) {
         selectFilm.genres = data.genres;
         
         openModalHandler();
-        
       });
-    
-    const queueArr = ["555", "300"];
-    const watchedArr = ["411", "258", "555"];
-
-    localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
-    localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
 
     monitorButtonStatusText(movieId);
     };
 };
 
-// open modal
+//open modal
 function openModalHandler() {
   window.addEventListener('keydown', closeModalByEsc);
   backdropRef.classList.remove("is-hidden");
   document.body.classList.add("scroll-hidden");
-
-  queueBtnRef.addEventListener('click', toggle (function (){
-    console.log("first");
-    if (queueBtnRef.textContent = 'Add to queue') {
-      queueBtnRef.textContent = 'Delete from queue';
-      return;
-    };
-    if (queueBtnRef.textContent = 'Delete from queue') {
-      queueBtnRef.textContent = 'Add to queue';
-      return;
-    }; 
-  }, function (){
-      console.log("second");
-      if (queueBtnRef.textContent = 'Delete from queue') {
-        queueBtnRef.textContent = 'Add to queue';
-        return;
-      };
-      if (queueBtnRef.textContent = 'Add to queue') {
-        queueBtnRef.textContent = 'Delete from queue';
-        return;
-      };
-}));
+  watchedBtnRef.addEventListener('click', toggleToWatched);
+  queueBtnRef.addEventListener('click', toggleToQueue);
 };
 
 //close modal
 function closeModalHandler() {
-  window.removeEventListener('keydown', closeModalByEsc);
   movieRef.innerHTML = "";
+  window.removeEventListener('keydown', closeModalByEsc);
+  watchedBtnRef.removeEventListener('click', toggleToWatched);
+  queueBtnRef.removeEventListener('click', toggleToQueue);
   document.body.classList.remove("scroll-hidden");
   
   backdropRef.classList.add("is-hidden");
-  
 };
 
 //close modal by Esc
@@ -124,65 +97,52 @@ function monitorButtonStatusText(movieId) {
   const savedWatched = localStorage.getItem('filmsWatched');
 
   if (JSON.parse(savedQueue.includes(movieId, 0))) {
-    queueBtnRef.textContent = 'Delete from queue';
+    queueBtnRef.textContent = 'DELETE FROM QUEUE';
   } else {
-    queueBtnRef.textContent = 'Add to queue';
+    queueBtnRef.textContent = 'ADD TO QUEUE';
   };
 
   if (JSON.parse(savedWatched.includes(movieId, 0))) {
-    watchedBtnRef.textContent = 'Delete from watched';
+    watchedBtnRef.textContent = 'DELETE FROM WATCHED';
   } else {
-    watchedBtnRef.textContent = 'Add to watched';
+    watchedBtnRef.textContent = 'ADD TO WATCHED';
   };
 };
 
-let queueArr = [];
-let watchedArr = [];
-
-var toggle = function (a, b) {
-    var togg = false;
-    return function () {
-        // passes return value back to caller
-        return (togg = !togg) ? a() : b();
-    };
-};
-
-
-
+//toggle btn Queue name and toggle id in local storage
 function toggleToQueue() {
   let queueArr = [];
   const idInfo = selectFilm.id;
   
-  if (queueBtnRef.textContent = 'Add to queue') {
+  if (queueBtnRef.innerHTML === 'ADD TO QUEUE') {
+    queueBtnRef.innerHTML = 'DELETE FROM QUEUE'
     queueArr = JSON.parse(localStorage.getItem('filmsQueue'));
     queueArr.push(idInfo);
     localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
-    queueBtnRef.textContent = 'Remove from queue';
-    let queueArr = [];
-    return;
-  };
-  if (queueBtnRef.textContent = 'Remove from queue') {
+
+  } else {
+    queueBtnRef.innerHTML = 'ADD TO QUEUE';
     queueArr = JSON.parse(localStorage.getItem('filmsQueue'));
     queueArr = queueArr.filter(item => item !== idInfo);
     localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
-    queueBtnRef.textContent = 'Add to queue';
-    let queueArr = [];
-    return;
   };
 };
 
-
-
-/* let queueArr = [];
-let watchedArr = []
-
-function toggleToQueue() {
-  if (queueBtnRef.textContent = 'Add to queue')
+//toggle btn Watched name and toggle id in local storage
+function toggleToWatched() {
+  let watchedArr = [];
   const idInfo = selectFilm.id;
-  if (queueBtnRef.textContent = 'Add to queue') {
-    queueArr = JSON.parse(localStorage.getItem('filmsQueue'));
-    queueArr.push(idInfo);
-  }
-} */
+  
+  if (watchedBtnRef.innerHTML === 'ADD TO WATCHED') {
+    watchedBtnRef.innerHTML = 'DELETE FROM WATCHED'
+    watchedArr = JSON.parse(localStorage.getItem('filmsWatched'));
+    watchedArr.push(idInfo);
+    localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
 
-
+  } else {
+    watchedBtnRef.innerHTML = 'ADD TO WATCHED';
+    watchedArr = JSON.parse(localStorage.getItem('filmsWatched'));
+    watchedArr = watchedArr.filter(item => item !== idInfo);
+    localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
+  };
+};
