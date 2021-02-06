@@ -50,8 +50,8 @@ const fetchPopularMoviesList = () => {
       .then(response => response.json())
       // .then(({ movies }) => movies)
       .then(movies => {
-        console.log(movies);
-        const fragment = createCardFunc(movies);
+        console.log(movies.results);
+        const fragment = createCardFunc(movies.results);
         filmGalleryRef.insertAdjacentHTML('beforeend', fragment);
       })
   );
