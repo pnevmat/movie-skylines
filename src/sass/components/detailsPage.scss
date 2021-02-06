@@ -100,7 +100,6 @@
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .movie {
     width: 618px;
-    display: flex;
     margin-top: 60px;
     margin-bottom: 60px;
 
@@ -131,12 +130,15 @@
       margin-bottom: 20px;
     }
   }
+
+  .template-container {
+    display: flex;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .movie {
     width: 882px;
-    display: flex;
     margin-top: 60px;
     margin-bottom: 60px;
 
@@ -165,5 +167,9 @@
     &__description {
       margin-bottom: 20px;
     }
+  }
+
+  .template-container {
+    display: flex;
   }
 }
