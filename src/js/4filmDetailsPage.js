@@ -50,6 +50,8 @@ function openModalHandler() {
   document.body.classList.add("scroll-hidden");
   watchedBtnRef.addEventListener('click', toggleToWatched);
   queueBtnRef.addEventListener('click', toggleToQueue);
+  console.log(selectFilm);
+  console.log(selectFilm.id);
 };
 
 //close modal
@@ -112,18 +114,17 @@ function monitorButtonStatusText(movieId) {
 //toggle btn Queue name and toggle id in local storage
 function toggleToQueue() {
   let queueArr = [];
-  const idInfo = selectFilm.id;
   
   if (queueBtnRef.innerHTML === 'ADD TO QUEUE') {
     queueBtnRef.innerHTML = 'DELETE FROM QUEUE'
     queueArr = JSON.parse(localStorage.getItem('filmsQueue'));
-    queueArr.push(idInfo);
+    queueArr.push(selectFilm);
     localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
 
   } else {
     queueBtnRef.innerHTML = 'ADD TO QUEUE';
     queueArr = JSON.parse(localStorage.getItem('filmsQueue'));
-    queueArr = queueArr.filter(item => item !== idInfo);
+    queueArr = queueArr.filter(item => item !== selectFilm);
     localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
   };
 };
@@ -131,18 +132,18 @@ function toggleToQueue() {
 //toggle btn Watched name and toggle id in local storage
 function toggleToWatched() {
   let watchedArr = [];
-  const idInfo = selectFilm.id;
   
   if (watchedBtnRef.innerHTML === 'ADD TO WATCHED') {
     watchedBtnRef.innerHTML = 'DELETE FROM WATCHED'
     watchedArr = JSON.parse(localStorage.getItem('filmsWatched'));
-    watchedArr.push(idInfo);
+    watchedArr.push(selectFilm);
     localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
 
   } else {
     watchedBtnRef.innerHTML = 'ADD TO WATCHED';
+    console.log('жмак');
     watchedArr = JSON.parse(localStorage.getItem('filmsWatched'));
-    watchedArr = watchedArr.filter(item => item !== idInfo);
+    watchedArr = watchedArr.filter(item => item !== selectFilm);
     localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
   };
 };
