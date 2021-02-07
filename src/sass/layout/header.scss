@@ -261,10 +261,11 @@
   text-decoration: none;
 }
 //------------------------------------------------------------------------------------------
-.notHidden {
-  transform: translatex(0);
+.hidden {
+  display: none;
 }
-.error {
+
+.error-span {
   display: block;
   text-align: center;
   align-items: center;
@@ -272,12 +273,20 @@
   font-size: 14px;
   line-height: 16px;
   color: #ff001b;
-  transform: translatex(-100%);
 }
+
 .myLibraryNavigationBox_js {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
 }
+
+@media screen and (min-width: 768px) {
+  .myLibraryNavigationBox_js {
+    padding-top: 10px;
+  }
+}
+
 .myLibraryNavigationList {
   display: inline-flex;
   box-sizing: border-box;
@@ -292,15 +301,17 @@
   display: block;
   width: 130px;
   height: 44px;
-  color: #fafafa;
-  background-color: initial;
   border: 1px solid #fafafa;
   border-radius: 5px;
+  color: #fafafa;
+  background-color: initial;
   text-align: center;
   font-size: 12px;
-  font-weight: 500;
+  font-weigth: 500;
+  text-transform: uppercase;
   line-height: 16px;
 }
+
 .myLibraryBtn:hover {
   background-color: #ff6b01;
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
