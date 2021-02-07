@@ -10,8 +10,13 @@
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
 
-  outline: 0px;
+  outline: none;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    filter: drop-shadow(0px 8px 38px #ff6b01);
+  }
 
   &--solid {
     background-color: #ff6b01;
@@ -22,5 +27,16 @@
     background-color: #fff;
     border: 1px solid #000;
     color: #000;
+  }
+
+  &--hollow:hover,
+  &--hollow:focus {
+    background-color: #ff6b01;
+    border: #ff6b01;
+    color: #fff;
+  }
+
+  &:active {
+    background-color: #cf5804;
   }
 }
