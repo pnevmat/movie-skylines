@@ -29,7 +29,6 @@ export default {
     return fetch(url)
     .then((res) => res.json())
     .then((result) => {
-      // fetchMore(result);
       // renderFilms = result.results;
       // return renderFilms; 
       return result;   

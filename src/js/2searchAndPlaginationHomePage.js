@@ -7,32 +7,31 @@ import api from './apiService';
 const paginationBtn = document.querySelector('.pgn');
 const searchForm = document.querySelector('.header-input');
 const filmGallery = document.querySelector('.film-gallery');
+const elem = document.querySelector('.error');
+console.log(elem);
 console.log(filmGallery);
 console.log(searchForm);
 
-// let paginator = new pagination.SearchPaginator({prelink: '/', current: 1,rowsPerPage: 9, totalResult: 1000});
-
+let paginat = new pagination.SearchPaginator({prelink: '/', current: 1,rowsPerPage: 9, totalResult: 1000});
 
 paginationBtn.addEventListener('click', onLoadMore);
 searchForm.addEventListener('submit', searchFilms);
-
 //-----------------------------------------------------------------------------------------------------
 function searchFilms(e) {
   e.preventDefault();
   const inputValue = e.target.query.value;
-  const elem = document.querySelector('.error');
-  // console.log(inputValue);
+  console.dir(inputValue);
   if(inputValue === []) {
-    elem.classList.add('notHidden');
+    elem.classList.remove('hidden');
     return;
   }; 
     resetPage();
     fetchFilms(inputValue).then(toMakeMarkup).catch(notify.errorMessage); 
-    elem.classList.remove('notHidden');
+    elem.classList.add('hidden');
     inputValue = "";
     filmGallery.innerHTML = '';
+    
 };
-
 
 function toMakeMarkup(result) {
   if(result.results.length === 0) {
@@ -41,7 +40,7 @@ function toMakeMarkup(result) {
   };
     toShowBtn();
     onLoadMore();
-    return (initialHomeJs.createCardFunc());
+    return createCardFunc();
 };    
   
 function toShowBtn(result) {
@@ -55,9 +54,13 @@ function toShowBtn(result) {
 function onLoadMore(event) {
   event.preventDefault();
   api.setPage();
-  paginator.getPaginationData('/', 1, 9, 943);
+  paginat.getPaginationData('/', 1, 9, 943);
   window.scrollTo({
     top: document.documentElement.scrollHeight, behavior: 'smooth'
   });  
-  api.fetchFilms(null).then(createCardFunc);
+  api.fetchFilms(null).then(toMakeMarkup);
 };  
+
+
+
+

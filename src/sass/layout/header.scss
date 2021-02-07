@@ -274,11 +274,11 @@
 }
 
 //------------------------------------------------------------------------------------------
-.notHidden {
-  transform: translatex(0);
+.hidden {
+  display: none;
 }
 
-.error {
+.error-span {
   display: block;
   text-align: center;
   align-items: center;
@@ -286,7 +286,6 @@
   font-size: 14px;
   line-height: 16px;
   color: #ff001b;
-  transform: translatex(-100%);
 }
 
 .myLibraryNavigationBox_js {

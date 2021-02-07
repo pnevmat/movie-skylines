@@ -14,7 +14,7 @@ libraryLink.addEventListener('click', () => {
 
 
 homeLink.addEventListener('click', activeHomePage);
-homePageLogo.addEventListener('click', activeHomePage);
+// homePageLogo.addEventListener('click', activeHomePage);
 libraryLink.addEventListener('click', activeLibraryPage);
 
 
