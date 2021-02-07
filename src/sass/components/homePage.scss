@@ -97,6 +97,8 @@ li {
 .film-img {
   width: 280px;
   height: 402px;
+  border-radius: 5px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 293px;
