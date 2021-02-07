@@ -15,17 +15,17 @@
       ),
       url('./images/hed.jpg');
   }
-  // .header-library {
-  //   background-repeat: no-repeat;
-  //   background-position: bottom;
-  //   background-size: cover;
-  //   background-image: linear-gradient(
-  //       to right,
-  //       rgba(0, 0, 0, 0.56),
-  //       rgba(0, 0, 0, 0.56)
-  //     ),
-  //     url('./images/hed-lib.jpg');
-  // }
+  .header-library {
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('./images/hed-lib.jpg');
+  }
 
   .container.nav-container {
     position: relative;
