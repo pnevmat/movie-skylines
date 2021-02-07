@@ -264,6 +264,10 @@
 .hidden {
   display: none;
 }
+.hideBtns {
+  display: none;
+  pointer-events: none;
+}
 
 .error-span {
   display: block;
@@ -307,7 +311,7 @@
   background-color: initial;
   text-align: center;
   font-size: 12px;
-  font-weigth: 500;
+  font-weight: 500;
   text-transform: uppercase;
   line-height: 16px;
 }
