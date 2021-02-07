@@ -1,127 +1,67 @@
 import notify from './data/pnotify';
+import createCardFunc from './1initialHomePage';
+import { paginator } from "pagination";
+import api from './apiService';
 
 
-export default {
-  baseUrl: 'https://api.themoviedb.org/3/',
-  API_KEY: '72466121c9676fc22348299f38033287',
-  query: '',
-  guest_session: '',
-  pageNumber: 1,
-  perPage: 20,
-  language: 'en-US',
-  
-  get queryValue() {
-    return this.query;
-  },
-  set queryValue(val) {
-    return (this.query = val);
-  }, 
-  
-  fetchFilms(inputValue, pageNumber) {
-    if (inputValue && inputValue.length > 0) {
-      this.queryValue = inputValue;
-    } 
-    const params = `search/movie?api_key=${this.API_KEY}&language=${this.language}&page=${pageNumber}&include_adult=false&query=${this.queryValue}`;
-    const url = `${this.baseUrl}${params}`;
-    return fetch(url)
-    .then((res) => res.json())
-    .then(({ results }) => {
-      return results})
-  },
-  
+const paginationBtn = document.querySelector('.pgn');
+const searchForm = document.querySelector('.header-input');
+const filmGallery = document.querySelector('.film-gallery');
+const elem = document.querySelector('.error');
+console.log(elem);
+console.log(filmGallery);
+console.log(searchForm);
 
+let paginat = new pagination.SearchPaginator({prelink: '/', current: 1,rowsPerPage: 9, totalResult: 1000});
 
-
-
-
-
-
-  fetchGenres() {
-    let genres = '';
-    const params = `genre/movie/list?api_key=${this.API_KEY}&language=${this.language}&page=${this.page}`;
-    const url = `${this.baseUrl}${params}`;
-    return fetch(url)
-    .then((res) => res.json())
-    .then(({ data }) => {
-      data.forEach(({data}) => {
-        genres += data[i].name;
-        console.log(genres);
-        return genres;
-      });
-    });
-  },
-
-  fetchPopularsMoviesList(val) {
-    this.pageNumber = val;
-    const params = `movie/popular?api_key=${this.API_KEY}&language=${this.language}&page=${this.page}`;
-    const url = `${this.baseUrl}${params}`;
-    return fetch(url)
-    .then((res) => res.json())
-    .then(({ results }) => {
-      return results})
-    
-  },
-
-};
-
-
-///////////////////////////////////////////////////////////
-
-form.addEventListener('submit', searchFilms);
-
+paginationBtn.addEventListener('click', onLoadMore);
+searchForm.addEventListener('submit', searchFilms);
+//-----------------------------------------------------------------------------------------------------
 function searchFilms(e) {
   e.preventDefault();
   const inputValue = e.target.query.value;
-  // console.log(inputValue);
+  console.dir(inputValue);
   if(inputValue === '') {
-    notify.noticeMessage();
+    elem.classList.remove('hidden');
     return;
   }; 
-  // apiObject.resetPage();
-  apiObject.fetchFilms(inputValue).then(createCardFunc).catch(notify.errorMessage); 
-  // input.value = "";
-  // gallery.innerHTML = '';
+    api.resetPage();
+    api.fetchFilms(inputValue).then(toMakeMarkup).catch(notify.errorMessage); 
+    elem.classList.add('hidden');
+    inputValue = "";
+    filmGallery.innerHTML = '';
+    
+  };
+  
+  function toMakeMarkup(result) {
+    if(result.results.length === 0) {
+      notify.noticeMessage();
+      return;
+    };
+      createCardFunc();
+      // const markup = cardsTpl(result.results);
+      filmGallery.insertAdjacentHTML('beforeend', markup);
+      window.scrollTo({
+        top: document.documentElement.scrollHeight, behavior: 'smooth'
+      });  
+      toShowBtn(result);
+      onLoadMore(result);
+};    
+  
+function toShowBtn(result) {
+  if (result.results.length > 9) {
+    console.log(result.results.length);
+    return paginationBtn.classList.remove('hidden');
+  } 
+  return paginationBtn.classList.add('hidden'); 
+};
 
-}
+function onLoadMore(event) {
+  event.preventDefault();
+  api.setPage();
+  paginat.getPaginationData('/', 1, 9, 943);
+  api.fetchFilms(null).then(toMakeMarkup);
+};  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // метод добавления стницы
-  // setPage() {
-  //   return this.page += 1;
-  // },
-  // метод сброса страниц
-  // resetPage() {
-  //   return this.page = 1;
-  // },
-  // async getFetch() {
-    //   // this.queryValue = val;
-    //   const URL = `${this.baseUrl}?image_type=photo&orientation=horizontal&q=${this.query}&page=${this.page}&per_page=${this.perPage}&key=${this.API_KEY}`;
-    //   const response = await fetch(URL);
-    //   const fetchResult = await response.json();
-    //   const imgs = await fetchResult.hits;
-    //   return imgs;
-    // },

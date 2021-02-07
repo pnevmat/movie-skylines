@@ -4,7 +4,7 @@
             <div class="logo-header">
                 <a href="./index.html" class="logo-link">
                     <svg class="logo-svg" width="24" height="24">
-                        <use href="/src/images/sprite.svg#icon-logo"></use>
+                        <use href="../images/sprite.svg#icon-logo"></use>
                     </svg>
                     <p class="logo-text">Filmoteka</p>
                 </a>
@@ -13,7 +13,7 @@
                 <nav class="header-nav">
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="" id="home" class="link current">HOME</a>
+                            <a href="" id="home" class="home-link current">HOME</a>
                         </li>
                         <li class="nav-item">
                             <button class="library-link" type="button">MY LIBRARY</button>
@@ -22,17 +22,32 @@
                 </nav>
             </div>
         </div>
-
-        <div class="input-container">
+        
+        <div class="input-container"> -->
             <div class="input-wrap">
                 <form action="">
                     <input type="text" class="header-input" placeholder="Search films" />
                     <svg width="12" height="12" class="input-icon">
-                        <use href="/src/images/sprite.svg#icon-search"></use>
+                        <use href="../images/sprite.svg#icon-search"></use>
                     </svg>
                 </form>
-
             </div>
+        </div> 
+
+        <div class="error hidden">
+            <span class="error-span">Search result not successful. Enter the correct movie name and</span>
         </div>
+             
+        <div class="myLibraryNavigationBox_js hidden"> -->
+            <ul class="myLibraryNavigationList">
+                <li class="myLibraryNavigationListItem">
+                    <button class="myLibraryBtn watchedBtn" id="watched">Watched</button>
+                </li>
+                <li class="myLibraryNavigationListItem">
+                    <button class="myLibraryBtn queueBtn" id="queue">Queue</button>
+                </li>
+            </ul>
+        </div>                  
+
     </div>
 </header>
