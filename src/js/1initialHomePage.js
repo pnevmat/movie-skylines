@@ -1,5 +1,5 @@
 `use strict`;
-import filmGalleryTpl from './filmGalleryItem.hbs';
+import filmGalleryTpl from '../templates/filmGalleryItem.hbs';
 
 const apiService = {
   baseUrl: 'https://api.themoviedb.org/3/',
@@ -37,24 +37,18 @@ let pageNumber = 1;
 
 const createCardFunc = arr => {
   const galleryItemMarkup = filmGalleryTpl(arr);
-
-  // find target
-  // filmGalleryRef.addEventListener('click', activeDetailsPage(movieId, false));
   return galleryItemMarkup;
 };
 
 const fetchPopularMoviesList = () => {
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=72466121c9676fc22348299f38033287&language=en-US&page=1`;
-  return (
-    fetch(url)
-      .then(response => response.json())
-      // .then(({ movies }) => movies)
-      .then(movies => {
-        console.log(movies);
-        const fragment = createCardFunc(movies);
-        filmGalleryRef.insertAdjacentHTML('beforeend', fragment);
-      })
-  );
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const movies = data.results;
+      const fragment = createCardFunc(movies);
+      filmGalleryRef.insertAdjacentHTML('beforeend', fragment);
+    });
 };
 
 const fetchGenres = () => {
