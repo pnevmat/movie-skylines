@@ -21,26 +21,31 @@ function searchFilms(e) {
   e.preventDefault();
   const inputValue = e.target.query.value;
   console.dir(inputValue);
-  if(inputValue === []) {
+  if(inputValue === '') {
     elem.classList.remove('hidden');
     return;
   }; 
-    resetPage();
-    fetchFilms(inputValue).then(toMakeMarkup).catch(notify.errorMessage); 
+    api.resetPage();
+    api.fetchFilms(inputValue).then(toMakeMarkup).catch(notify.errorMessage); 
     elem.classList.add('hidden');
     inputValue = "";
     filmGallery.innerHTML = '';
     
-};
-
-function toMakeMarkup(result) {
-  if(result.results.length === 0) {
-    notify.noticeMessage();
-    return;
   };
-    toShowBtn();
-    onLoadMore();
-    return createCardFunc();
+  
+  function toMakeMarkup(result) {
+    if(result.results.length === 0) {
+      notify.noticeMessage();
+      return;
+    };
+      createCardFunc();
+      // const markup = cardsTpl(result.results);
+      filmGallery.insertAdjacentHTML('beforeend', markup);
+      window.scrollTo({
+        top: document.documentElement.scrollHeight, behavior: 'smooth'
+      });  
+      toShowBtn(result);
+      onLoadMore(result);
 };    
   
 function toShowBtn(result) {
@@ -55,12 +60,8 @@ function onLoadMore(event) {
   event.preventDefault();
   api.setPage();
   paginat.getPaginationData('/', 1, 9, 943);
-  window.scrollTo({
-    top: document.documentElement.scrollHeight, behavior: 'smooth'
-  });  
   api.fetchFilms(null).then(toMakeMarkup);
 };  
-
 
 
 

@@ -33,6 +33,7 @@ export default {
       // return renderFilms; 
       return result;   
     });
+    
   },
 
     // fetchGenres() {
@@ -64,5 +65,5 @@ export default {
   //     return result;   
   //   });
   // },
-
+  
 };

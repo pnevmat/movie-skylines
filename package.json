@@ -58,6 +58,6 @@
     "imagemin-svgo": "^8.0.0",
     "pagination": "^0.4.6",
     "pnotify": "^5.2.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.0"
   }
 }

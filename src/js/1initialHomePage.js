@@ -41,6 +41,7 @@ let pageNumber = 1;
 
 const createCardFunc = arr => {
   const galleryItemMarkup = filmGalleryTpl(arr);
+  console.log(galleryItemMarkup);
   // find target
   // filmGalleryRef.addEventListener('click', activeDetailsPage(movieId, false));
   return galleryItemMarkup;
