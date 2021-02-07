@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 import './js/htmlCollector';
 import './styles.scss';
 import './js/1initialHomePage';

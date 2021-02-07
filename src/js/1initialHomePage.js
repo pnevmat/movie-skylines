@@ -49,6 +49,14 @@ const createCardFunc = arr => {
 
 const fetchPopularMoviesList = () => {
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=72466121c9676fc22348299f38033287&language=en-US&page=1`;
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const movies = data.results;
+      const fragment = createCardFunc(movies);
+      filmGalleryRef.insertAdjacentHTML('beforeend', fragment);
+    });
+};
   return (
     fetch(url)
       .then(response => response.json())
@@ -60,7 +68,7 @@ const fetchPopularMoviesList = () => {
         return renderFilms.push(movies.results)
       })  
   );    
-};  
+};
 
 const fetchGenres = () => {
   const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${api.API_KEY}&language=en-US`;

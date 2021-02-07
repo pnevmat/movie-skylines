@@ -4,8 +4,8 @@
     <h3 class="film-name">{{title}}</h3>
     <div class="film-stat">
         <p class="film-description">
-            {{#each genres}}
-            <span>{{genre_ids}}</span>
+            {{#each genre_ids}}
+            <span>{{this}}</span>
             {{/each}}
             {{release_date}}
         </p>
