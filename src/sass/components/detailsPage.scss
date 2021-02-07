@@ -1,14 +1,16 @@
 .movie {
+  position: relative;
   display: block;
   width: 280px;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px 20px 40px 20px;
+  padding: 20px;
   margin-bottom: 40px;
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  filter: drop-shadow(0px 8px 38px #361700);
 
   &__cover {
     width: 280px;
@@ -93,16 +95,39 @@
   display: flex;
 
   :first-child {
-    margin-right: 15px;
+    margin-right: 8px;
+  }
+}
+
+.btn-close {
+  position: absolute;
+  fill: #ff6b01;
+  width: 36px;
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  right: 0px;
+  top: -8px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    filter: drop-shadow(-20px 20px 30px #ff6b01);
+  }
+
+  &:active {
+    fill: #cf5804;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .movie {
-    width: 618px;
     display: flex;
+    width: 618px;
     margin-top: 60px;
     margin-bottom: 60px;
+    border-top-right-radius: 0px;
 
     &__cover {
       width: 294px;
@@ -131,14 +156,24 @@
       margin-bottom: 20px;
     }
   }
+
+  .button-container :first-child {
+    margin-right: 15px;
+  }
+
+  .btn-close {
+    width: 40px;
+    right: -8px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
   .movie {
-    width: 882px;
     display: flex;
+    width: 882px;
     margin-top: 60px;
     margin-bottom: 60px;
+    border-top-right-radius: 0px;
 
     &__cover {
       width: 426px;
@@ -165,5 +200,19 @@
     &__description {
       margin-bottom: 20px;
     }
+  }
+
+  .template-container {
+    display: flex;
+  }
+
+  .button-container :first-child {
+    margin-right: 15px;
+  }
+
+  .btn-close {
+    width: 42px;
+    right: -10px;
+    top: -10px;
   }
 }
