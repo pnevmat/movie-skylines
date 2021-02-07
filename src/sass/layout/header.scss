@@ -64,7 +64,7 @@
 
   .logo-text {
     color: white;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
     font-weight: 500;
     font-size: 30px;
     transition: 0.4s;
@@ -128,7 +128,7 @@
 
   .logo-text {
     color: white;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
     font-weight: 500;
     font-size: 30px;
   }
@@ -274,19 +274,33 @@
 }
 
 //------------------------------------------------------------------------------------------
-span[class='error'] {
-  display: flex;
+.notHidden {
+  transform: translatex(0);
+}
+
+.error {
+  display: block;
   text-align: center;
   align-items: center;
+  padding-top: 22px;
   font-size: 14px;
   line-height: 16px;
   color: #ff001b;
+  transform: translatex(-100%);
 }
 
 .myLibraryNavigationBox_js {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
 }
+
+@media screen and (min-width: 768px) {
+  .myLibraryNavigationBox_js {
+    padding-top: 10px;
+  }
+}
+
 
 .myLibraryNavigationList {
   display: inline-flex;
@@ -304,12 +318,14 @@ span[class='error'] {
   display: block;
   width: 130px;
   height: 44px;
-  color: #fafafa;
-  background-color: initial;
   border: 1px solid #fafafa;
   border-radius: 5px;
+  color: #fafafa;
+  background-color: initial;
   text-align: center;
   font-size: 12px;
+  font-weigth: 500;
+  text-transform: uppercase;
   line-height: 16px;
 }
 
