@@ -4,7 +4,6 @@
 .input-icon {
   stroke: #fff;
 }
-
 @media screen and (min-width: 1024px) {
   .header {
     background-repeat: no-repeat;
@@ -16,6 +15,17 @@
       ),
       url('./images/hed.jpg');
   }
+  // .header-library {
+  //   background-repeat: no-repeat;
+  //   background-position: bottom;
+  //   background-size: cover;
+  //   background-image: linear-gradient(
+  //       to right,
+  //       rgba(0, 0, 0, 0.56),
+  //       rgba(0, 0, 0, 0.56)
+  //     ),
+  //     url('./images/hed-lib.jpg');
+  // }
 
   .container.nav-container {
     position: relative;
@@ -24,12 +34,10 @@
     margin-left: auto;
     margin-right: auto;
   }
-
   .logo-header {
     display: flex;
     align-items: center;
   }
-
   .input-container {
     width: 100%;
     height: 20px;
@@ -43,7 +51,6 @@
     width: 336px;
     position: relative;
   }
-
   .header-input {
     border: 0;
     border-bottom: 0.5px solid;
@@ -54,17 +61,15 @@
     color: white;
     outline: none;
   }
-
   .input-icon {
     position: absolute;
     right: 0;
     top: 4.5px;
     stroke: #ffff;
   }
-
   .logo-text {
     color: white;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
     font-weight: 500;
     font-size: 30px;
     transition: 0.4s;
@@ -82,7 +87,6 @@
       ),
       url('./images/hedtab.jpg');
   }
-
   .container.nav-container {
     position: relative;
     width: 618px;
@@ -90,10 +94,8 @@
     margin-left: auto;
     margin-right: auto;
   }
-
   .logo-header {
     display: flex;
-
     align-items: center;
   }
   .input-container {
@@ -108,7 +110,6 @@
     width: 336px;
     position: relative;
   }
-
   .header-input {
     border: 0;
     border-bottom: 0.5px solid;
@@ -119,21 +120,18 @@
     color: white;
     outline: none;
   }
-
   .input-icon {
     position: absolute;
     right: 0;
     top: 4.5px;
   }
-
   .logo-text {
     color: white;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
     font-weight: 500;
     font-size: 30px;
   }
 }
-
 @media screen and (max-width: 767px) {
   .header {
     background-repeat: no-repeat;
@@ -145,14 +143,12 @@
       ),
       url('./images/hedmob.jpg');
   }
-
   .container.nav-container {
     width: 280px;
     height: 230px;
     margin-left: auto;
     margin-right: auto;
   }
-
   .input-container {
     position: relative;
     margin-top: 40px;
@@ -172,20 +168,17 @@
     color: white;
     outline: none;
   }
-
   .logo-text {
     color: white;
     display: none;
   }
 }
-
 .header-container {
   padding-top: 46px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
-
 .nav-list {
   display: flex;
   justify-content: space-between;
@@ -201,14 +194,12 @@
   font-weight: 500;
   text-decoration: none;
 }
-
 .nav-item {
   padding-top: 10px;
 }
 .nav-item:not(:last-child) {
   margin-right: 40px;
 }
-
 .home-link.current::after {
   position: absolute;
   content: '';
@@ -220,11 +211,9 @@
   bottom: 0;
   border-radius: 0px;
 }
-
 .header-input::placeholder {
   color: rgb(153, 151, 151);
 }
-
 .library-link {
   border: none;
   background: transparent;
@@ -234,7 +223,6 @@
   line-height: 14px;
   outline: none;
 }
-
 .nav-list .library-link {
   position: relative;
   font-size: 12px;
@@ -254,14 +242,12 @@
   border-radius: 0px;
   text-decoration: none;
 }
-
 .home-link:hover,
 .library-link:hover,
 .logo-text:hover {
   color: #ff6b01;
   transition: 0.4s;
 }
-
 .logo-link:hover .logo-svg {
   fill: #ff6b01;
   transition: 0.4s;
@@ -274,22 +260,24 @@
 .link-current {
   text-decoration: none;
 }
-
 //------------------------------------------------------------------------------------------
-span[class='error'] {
-  display: flex;
+.notHidden {
+  transform: translatex(0);
+}
+.error {
+  display: block;
   text-align: center;
   align-items: center;
+  padding-top: 22px;
   font-size: 14px;
   line-height: 16px;
   color: #ff001b;
+  transform: translatex(-100%);
 }
-
 .myLibraryNavigationBox_js {
   display: flex;
   justify-content: center;
 }
-
 .myLibraryNavigationList {
   display: inline-flex;
   box-sizing: border-box;
@@ -297,11 +285,9 @@ span[class='error'] {
   margin: 0;
   padding: 0 0 65px;
 }
-
 .myLibraryNavigationListItem:not(:first-child) {
   padding-left: 20px;
 }
-
 .myLibraryBtn {
   display: block;
   width: 130px;
@@ -312,9 +298,9 @@ span[class='error'] {
   border-radius: 5px;
   text-align: center;
   font-size: 12px;
+  font-weight: 500;
   line-height: 16px;
 }
-
 .myLibraryBtn:hover {
   background-color: #ff6b01;
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
