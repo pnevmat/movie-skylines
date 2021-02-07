@@ -2,10 +2,9 @@
 const header = document.querySelector('header');
 const libraryLink = document.querySelector('.library-link');
 const homeLink = document.querySelector('.home-link');
-const homePageLogo = document.querySelector('.link-logo');
-// взять класс у андрея
-const libraryPage = document.querySelector('.library-page'); 
-const libraryBtn = document.querySelector('.myLibraryBtn');
+const homeLogo = document.querySelector('.link-logo');
+const libraryPage = document.querySelector('.myLibraryNavigationBox_js'); 
+ const libraryBtn = document.querySelector('.myLibraryBtn');
 
 libraryLink.addEventListener('click', () => {
     activeLibraryPage();
@@ -14,19 +13,19 @@ libraryLink.addEventListener('click', () => {
 
 
 homeLink.addEventListener('click', activeHomePage);
-homePageLogo.addEventListener('click', activeHomePage);
+homeLogo.addEventListener('click', activeHomePage);
 libraryLink.addEventListener('click', activeLibraryPage);
 
 
 function activeHomePage() {
-  input = '';
+  inputValue = '';
     activeInput();
   header.classList.add('header');
   header.classList.remove('header');
   libraryLink.classList.remove('current');
   homeLink.classList.add('current');
-  libraryPage.classList.add('library');  
-  libraryBtn.classList.add('library');
+  libraryPage.classList.add('hidden');  
+  // libraryBtn.classList.add('hidden');
   localStorage.setItem('activePage', 'activeHomePage');
 }
 
@@ -34,19 +33,13 @@ function activeLibraryPage() {
   header.classList.remove('header');
   header.classList.add('header');
   libraryLink.classList.add('current');
-  libraryBtn.classList.remove('library');
+  // libraryBtn.classList.remove('library');
+  libraryPage.classList.remove('hidden');
   localStorage.setItem('activePage', 'activeLibraryPage');
-      
 }
   
-function activeDetalilsPage() {
-  header.classList.remove('header');
-  header.classList.add('header');
-  libraryLink.classList.add('current');
-  libraryBtn.classList.remove('library');
-  localStorage.setItem('activePage', 'activeLibraryPage');
-      
-}
+// // function activeDetalilsPage() {
+
 
 
 if (localStorage.getItem('activePage') === 'activeHomePage') {
