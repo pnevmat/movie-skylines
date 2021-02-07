@@ -9,6 +9,31 @@ const refs = {
 }
 
 function drawWatchedFilmList() {
+const main = document.querySelector('main');
+  const filmGalleryRef = document.querySelector('.film-gallery');
+  const header = document.querySelector('header');
+
+  header.innerHTML = ''
+filmGalleryRef.innerHTML = ''
+  let watchedMovieCards = localStorage.getItem('filmsWatched') ? JSON.parse(localStorage.getItem('filmsWatched')) : [];
+  
+   console.log('gfhhgjhk');
+  
+  if (watchedMovieCards.length == 0) {
+    refs.libraryList.insertAdjacentElement('beforeend',
+      `<div class="no-list">
+            <h2 class="no-list__item">“You do not have watched movies. Add them.”</h2>
+        </div>`);
+  } else {
+    refs.libraryList.innerHTML = '';
+      const movieGallery = movieGalleryMarkup(watchedMovieCards);
+      main.insertAdjacentHTML('beforebegin', movieGallery);
+  }
+  
+}
+
+
+=======
     let watchedMovieCards = localStorage.getItem('filmsWatched')? JSON.parse(localStorage.getItem('filmsWatched')) : [];
   if (watchedMovieCards.length == 0) {
         refs.libraryList.insertAdjacentElement('beforeend',
@@ -23,9 +48,6 @@ function drawWatchedFilmList() {
     });
   }
 }
-
-
-
 
 function drawQueueFilmList() {
   let queueMovieCards = localStorage.getItem('filmsQueue') ? JSON.parse(localStorage.getItem('filmsQueue')) : [];
@@ -42,7 +64,10 @@ function drawQueueFilmList() {
 
     });
   }
-}    refs.watchedButton.addEventListener('click', drawWatchedFilmList);
-    refs.queueButton.addEventListener('click', drawQueueFilmList);
+}
 
-     
+
+const libraryLink = document.querySelector('.library-link');
+refs.watchedButton.addEventListener('click', drawWatchedFilmList);
+refs.queueButton.addEventListener('click', drawQueueFilmList);
+libraryLink.addEventListener('click', drawWatchedFilmList);
