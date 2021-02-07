@@ -1,53 +1,63 @@
 <header class="header">
-    <div class="container nav-container">
-        <div class="header-container">
-            <div class="logo-header">
-                <a href="./index.html" class="logo-link">
-                    <svg class="logo-svg" width="24" height="24">
-                        <use href="../images/sprite.svg#icon-logo"></use>
-                    </svg>
-                    <p class="logo-text">Filmoteka</p>
-                </a>
-            </div>
-            <div class="header-nav-container">
-                <nav class="header-nav">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="" id="home" class="home-link current">HOME</a>
-                        </li>
-                        <li class="nav-item">
-                            <button class="library-link" type="button">MY LIBRARY</button>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        
-        <div class="input-container"> -->
-            <div class="input-wrap">
-                <form action="">
-                    <input type="text" class="header-input" placeholder="Search films" />
-                    <svg width="12" height="12" class="input-icon">
-                        <use href="../images/sprite.svg#icon-search"></use>
-                    </svg>
-                </form>
-            </div>
-        </div> 
-
-        <div class="error hidden">
-            <span class="error-span">Search result not successful. Enter the correct movie name and</span>
-        </div>
-             
-        <div class="myLibraryNavigationBox_js hidden"> -->
-            <ul class="myLibraryNavigationList">
-                <li class="myLibraryNavigationListItem">
-                    <button class="myLibraryBtn watchedBtn" id="watched">Watched</button>
-                </li>
-                <li class="myLibraryNavigationListItem">
-                    <button class="myLibraryBtn queueBtn" id="queue">Queue</button>
-                </li>
-            </ul>
-        </div>                  
-
+  <div class="container nav-container">
+    <div class="header-container">
+      <div class="logo-header">
+        <a href="./index.html" class="logo-link">
+          <svg class="logo-svg" width="24" height="24">
+            <use href="../images/sprite.svg#icon-logo"></use>
+          </svg>
+          <p class="logo-text">Filmoteka</p>
+        </a>
+      </div>
+      <div class="header-nav-container">
+        <nav class="header-nav">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="" id="home" class="home-link current">HOME</a>
+            </li>
+            <li class="nav-item">
+              <button class="library-link" type="button">MY LIBRARY</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
+
+    <div class="input-container">
+      <div class="input-wrap">
+        <form id="search-form-js">
+          <input
+            type="text"
+            name="query"
+            autocomplete="off"
+            class="header-input"
+            placeholder="Search films"
+          />
+          <svg width="12" height="12" class="input-icon">
+            <use href="../images/sprite.svg#icon-search"></use>
+          </svg>
+        </form>
+
+        <!-- <span class="error hidden">Search result not successful. Enter the correct movie name and</span> -->
+      </div>
+    </div>
+
+    <div class="error hidden">
+      <span class="error-span"
+        >Search result not successful. Enter the correct movie name and</span
+      >
+    </div>
+
+    <div class="myLibraryNavigationBox_js hidden">
+      -->
+      <ul class="myLibraryNavigationList">
+        <li class="myLibraryNavigationListItem">
+          <button class="myLibraryBtn watchedBtn" id="watched">Watched</button>
+        </li>
+        <li class="myLibraryNavigationListItem">
+          <button class="myLibraryBtn queueBtn" id="queue">Queue</button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
