@@ -3,18 +3,14 @@ import filmDetailsTpl from '../templates/filmDetails.hbs';
 const apiKey = '72466121c9676fc22348299f38033287';
 
 
-const movieRef = document.querySelector(".template-container");
-const movieListRef = document.querySelector('.film-gallery');
+const movieRef = document.querySelector(".movie");
+const movieListRef = document.querySelector(".film-gallery");
 const backdropRef = document.querySelector(".backdrop");
-const watchedBtnRef = document.querySelector(".js-watched"); 
-const queueBtnRef = document.querySelector(".js-queue");
-
 
 movieListRef.addEventListener('click', createMovieDetails);
 backdropRef.addEventListener('click', backdropClickHandler);
-
+  
 let selectFilm = {};
-
 
 
 //create modal content with template
@@ -24,10 +20,10 @@ function createMovieDetails(e) {
     const movieId = e.target.getAttribute('data-id');
     let url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
   
+    
     fetch(url)
       .then(response => response.json())
       .then((data) => {
-
         movieRef.insertAdjacentHTML('beforeend', filmDetailsTpl(data));
         
         selectFilm.id = movieId;
@@ -38,56 +34,41 @@ function createMovieDetails(e) {
         selectFilm.genres = data.genres;
         
         openModalHandler();
-        
+        monitorButtonStatusText(movieId);
       });
-    
-    const queueArr = ["555", "300"];
-    const watchedArr = ["411", "258", "555"];
-
-    localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
-    localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
-
-    monitorButtonStatusText(movieId);
     };
 };
 
-// open modal
+//open modal
 function openModalHandler() {
-  window.addEventListener('keydown', closeModalByEsc);
+
+  const watchedBtnRef = document.querySelector(".js-watched");
+  const queueBtnRef = document.querySelector(".js-queue");
+  const btnCloseRef = document.querySelector(".btn-close");
+  
   backdropRef.classList.remove("is-hidden");
   document.body.classList.add("scroll-hidden");
-
-  queueBtnRef.addEventListener('click', toggle (function (){
-    console.log("first");
-    if (queueBtnRef.textContent = 'Add to queue') {
-      queueBtnRef.textContent = 'Delete from queue';
-      return;
-    };
-    if (queueBtnRef.textContent = 'Delete from queue') {
-      queueBtnRef.textContent = 'Add to queue';
-      return;
-    }; 
-  }, function (){
-      console.log("second");
-      if (queueBtnRef.textContent = 'Delete from queue') {
-        queueBtnRef.textContent = 'Add to queue';
-        return;
-      };
-      if (queueBtnRef.textContent = 'Add to queue') {
-        queueBtnRef.textContent = 'Delete from queue';
-        return;
-      };
-}));
+  
+  window.addEventListener('keydown', closeModalByEsc);
+  btnCloseRef.addEventListener('click', closeModalHandler);
+  watchedBtnRef.addEventListener('click', toggleToWatched);
+  queueBtnRef.addEventListener('click', toggleToQueue);
 };
 
 //close modal
 function closeModalHandler() {
-  window.removeEventListener('keydown', closeModalByEsc);
+  const watchedBtnRef = document.querySelector(".js-watched");
+  const queueBtnRef = document.querySelector(".js-queue");
+  const btnCloseRef = document.querySelector(".btn-close");
+
   movieRef.innerHTML = "";
+  window.removeEventListener('keydown', closeModalByEsc);
+  btnCloseRef.removeEventListener('click', closeModalHandler);
+  watchedBtnRef.removeEventListener('click', toggleToWatched);
+  queueBtnRef.removeEventListener('click', toggleToQueue);
   document.body.classList.remove("scroll-hidden");
   
   backdropRef.classList.add("is-hidden");
-  
 };
 
 //close modal by Esc
@@ -120,69 +101,60 @@ function createEmptyLocalStorage() {
 function monitorButtonStatusText(movieId) {
   createEmptyLocalStorage();
 
+  const watchedBtnRef = document.querySelector(".js-watched"); 
+  const queueBtnRef = document.querySelector(".js-queue");
+
   const savedQueue = localStorage.getItem('filmsQueue');
   const savedWatched = localStorage.getItem('filmsWatched');
 
   if (JSON.parse(savedQueue.includes(movieId, 0))) {
-    queueBtnRef.textContent = 'Delete from queue';
+    queueBtnRef.textContent = 'DELETE FROM QUEUE';
   } else {
-    queueBtnRef.textContent = 'Add to queue';
+    queueBtnRef.textContent = 'ADD TO QUEUE';
   };
 
   if (JSON.parse(savedWatched.includes(movieId, 0))) {
-    watchedBtnRef.textContent = 'Delete from watched';
+    watchedBtnRef.textContent = 'DELETE FROM WATCHED';
   } else {
-    watchedBtnRef.textContent = 'Add to watched';
+    watchedBtnRef.textContent = 'ADD TO WATCHED';
   };
 };
 
-let queueArr = [];
-let watchedArr = [];
-
-var toggle = function (a, b) {
-    var togg = false;
-    return function () {
-        // passes return value back to caller
-        return (togg = !togg) ? a() : b();
-    };
-};
-
-
-
+//toggle btn Queue name and toggle id in local storage
 function toggleToQueue() {
   let queueArr = [];
-  const idInfo = selectFilm.id;
+  const queueBtnRef = document.querySelector(".js-queue");
   
-  if (queueBtnRef.textContent = 'Add to queue') {
+  
+  if (queueBtnRef.innerHTML === 'ADD TO QUEUE') {
+    queueBtnRef.innerHTML = 'DELETE FROM QUEUE'
     queueArr = JSON.parse(localStorage.getItem('filmsQueue'));
-    queueArr.push(idInfo);
+    queueArr.push(selectFilm);
     localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
-    queueBtnRef.textContent = 'Remove from queue';
-    let queueArr = [];
-    return;
-  };
-  if (queueBtnRef.textContent = 'Remove from queue') {
+
+  } else {
+    queueBtnRef.innerHTML = 'ADD TO QUEUE';
     queueArr = JSON.parse(localStorage.getItem('filmsQueue'));
-    queueArr = queueArr.filter(item => item !== idInfo);
+    queueArr = queueArr.filter(n => n.id !== selectFilm.id);
     localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
-    queueBtnRef.textContent = 'Add to queue';
-    let queueArr = [];
-    return;
   };
 };
 
+//toggle btn Watched name and toggle id in local storage
+function toggleToWatched() {
+  let watchedArr = [];
+  const watchedBtnRef = document.querySelector(".js-watched"); 
+  
+  if (watchedBtnRef.innerHTML === 'ADD TO WATCHED') {
+    watchedBtnRef.innerHTML = 'DELETE FROM WATCHED'
+    watchedArr = JSON.parse(localStorage.getItem('filmsWatched'));
+    watchedArr.push(selectFilm);
+    localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
 
-
-/* let queueArr = [];
-let watchedArr = []
-
-function toggleToQueue() {
-  if (queueBtnRef.textContent = 'Add to queue')
-  const idInfo = selectFilm.id;
-  if (queueBtnRef.textContent = 'Add to queue') {
-    queueArr = JSON.parse(localStorage.getItem('filmsQueue'));
-    queueArr.push(idInfo);
-  }
-} */
-
-
+  } else {
+    watchedBtnRef.innerHTML = 'ADD TO WATCHED';
+    watchedArr = JSON.parse(localStorage.getItem('filmsWatched'));
+    watchedArr = watchedArr.filter(n => n.id !== selectFilm.id);
+    localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
+  };
+};
