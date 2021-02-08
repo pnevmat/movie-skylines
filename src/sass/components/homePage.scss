@@ -9,6 +9,11 @@ main {
   margin-right: auto;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+}
+
 li {
   list-style: none;
 }
@@ -103,4 +108,14 @@ li {
   margin: 0;
   margin-right: 10px;
   color: #ff6b01;
+}
+
+.paginator {
+  display: flex;
+  align-items: center;
+}
+
+.pages-container {
+  display: flex;
+  align-items: center;
 }

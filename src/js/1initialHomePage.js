@@ -2,6 +2,7 @@
 import filmGalleryTpl from '../templates/filmGalleryItem.hbs';
 import api from './apiService';
 import notify from './data/pnotify';
+import pagesRenderHandler from './2searchAndPlaginationHomePage';
 
 let renderFilms = [];
 let genres = [];
@@ -13,9 +14,18 @@ const btnsRef = document.querySelector('.myLibraryNavigationBox_js');
 
 btnsRef.classList.add('hideBtns');
 
-const createCardFunc = arr => {
-  const galleryItemMarkup = filmGalleryTpl(arr);
-  return galleryItemMarkup;
+const createCardFunc = (number, arr) => {
+  if (number !== 1) {
+    const moviesToRender = arr.filter((item, index) => index >= (number * 9 - 1) - 8 && index <= (number * 9 - 1));
+    const galleryItemMarkup = filmGalleryTpl(moviesToRender);
+    filmGalleryRef.innerHTML = '';
+    filmGalleryRef.insertAdjacentHTML('beforeend', galleryItemMarkup);
+  } else {
+    const moviesToRender = arr.filter((item, index) => index <= (number * 9 - 1));
+    const galleryItemMarkup = filmGalleryTpl(moviesToRender);
+    filmGalleryRef.innerHTML = '';
+    filmGalleryRef.insertAdjacentHTML('beforeend', galleryItemMarkup);
+  }
 };
 
 const fetchPopularMoviesList = () => {
@@ -23,9 +33,16 @@ const fetchPopularMoviesList = () => {
   return fetch(url)
     .then(response => response.json())
     .then(data => {
-      const movies = data.results;
-      const fragment = createCardFunc(movies);
-      filmGalleryRef.insertAdjacentHTML('beforeend', fragment);
+      renderFilms = data.results;
+      const renderPages = [];
+      renderFilms.forEach((item, index) => {
+        if (index <= renderFilms.length / 9 + 1 && index !== 0) {
+          renderPages.push(index);
+        }
+      });
+      pagesRenderHandler(renderPages);
+      const fragment = createCardFunc(pageNumber, renderFilms);
+      localStorage.setItem('renderFilms', JSON.stringify(renderFilms));
     });
 };
 
@@ -79,4 +96,4 @@ searchFormRef.addEventListener('submit', event => {
   form.reset();
 });
 
-export default { createCardFunc };
+export default createCardFunc;
