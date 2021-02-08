@@ -1,12 +1,13 @@
 `use strict`;
 import filmGalleryTpl from '../templates/filmGalleryItem.hbs';
-import api from './apiService';
+import ApiService from './apiService';
 import notify from './data/pnotify';
 import pagesRenderHandler from './2searchAndPlaginationHomePage';
 
 let renderFilms = [];
 let genres = [];
 let pageNumber = 1;
+const api = new ApiService();
 
 const filmGalleryRef = document.querySelector('.film-gallery');
 const searchFormRef = document.querySelector('#search-form-js');
@@ -34,7 +35,9 @@ function otherPagesRenderHandler(number, arr) {
 };
 
 function renderCardHandler(arr) {
+  // console.log(arr);
   const galleryItemMarkup = filmGalleryTpl(arr);
+  console.log(galleryItemMarkup);
   filmGalleryRef.innerHTML = '';
   myLibrarySectionRef.classList.add('is-hiddenLib');
   filmGalleryRef.insertAdjacentHTML('beforeend', galleryItemMarkup);
@@ -70,7 +73,7 @@ const fetchPopularMoviesList = () => {
 fetchPopularMoviesList();
 // fetchGenres();
 
-const apiService = {
+export const apiService = {
   key: '72466121c9676fc22348299f38033287',
   searchQuery: '',
   page: 1,
@@ -84,20 +87,11 @@ const apiService = {
   //       apiService.fetchFilms(query);
   //     });
   // },
-  fetchFilms() {
-    const url = encodeURI(`https://api.themoviedb.org/3/search/movie?api_key=${this.key}&language=en-US&include_adult=false&query=${this.searchQuery}`);
+  fetchFilms(inputValue) {
+    const url = encodeURI(`https://api.themoviedb.org/3/search/movie?api_key=${this.key}&language=en-US&include_adult=false&query=${inputValue}`);
     return fetch(url)
       .then(response => response.json())
-      .then(data => {
-        const movies = data.results;
-        // console.log(movies);
-        // debugger;
-        const popularFilms = false;
-        localStorage.setItem('queryPopularFilms', popularFilms);
-        localStorage.setItem('renderGenreFilms', JSON.stringify(movies));
-        const fragment = createCardFunc(pageNumber, movies);
-        filmGalleryRef.insertAdjacentHTML('beforeend', fragment);
-      });
+      .then(data => console.log(data.results));
   },
   resetPage() {
     this.page = 1;
@@ -110,19 +104,30 @@ const apiService = {
   },
 };
 
-searchFormRef.addEventListener('submit', event => {
-  event.preventDefault();
-  const form = event.currentTarget;
-  apiService.query = form.elements.query.value;
-  filmGalleryRef.innerHTML = '';
-  apiService.fetchFilms();
+// function fo() {
+//   const movies = data.results;
+//         // console.log(movies);
+//         // debugger;
+//         const popularFilms = false;
+//         localStorage.setItem('queryPopularFilms', popularFilms);
+//         localStorage.setItem('renderGenreFilms', JSON.stringify(movies));
+//         const fragment = createCardFunc(pageNumber, movies);
+//         filmGalleryRef.insertAdjacentHTML('beforeend', fragment);
+// }
 
-  if (apiService.query === '') {
-    notify.noticeMessage();
-    return;
-  }
+// searchFormRef.addEventListener('submit', event => {
+//   event.preventDefault();
+//   const form = event.currentTarget;
+//   apiService.query = form.elements.query.value;
+//   filmGalleryRef.innerHTML = '';
+//   apiService.fetchFilms();
 
-  form.reset();
-});
+//   if (apiService.query === '') {
+//     notify.noticeMessage();
+//     return;
+//   }
+
+//   form.reset();
+// });
 
 export default createCardFunc;
