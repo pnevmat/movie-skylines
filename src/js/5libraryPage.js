@@ -8,7 +8,9 @@ const refs = {
   libHeaderNavigationBtns: document.querySelector(".myLibraryNavigationBox_js"),
   searchField: document.querySelector(".input-container"),
   libraryLink: document.querySelector(".library-link"),
-  homeLink: document.querySelector(".home-link")
+  homeLink: document.querySelector(".home-link"),
+    noList: document.querySelector('.no-list__item')
+
 };
 
 const filmGalleryRef = document.querySelector('.film-gallery');
@@ -32,13 +34,9 @@ function drawWatchedFilmList() {
   ////// filmGalleryRef указал это, и теперь пулит куда надо
   if (watchedMovieCards.length == 0) {
     refs.libraryList.innerHTML = '';
-    refs.libraryList.insertAdjacentHTML(
-      'beforeend',
-      `<div class="no-list">
-            <h2 class="no-list__item">“You do not have watched movies. Add them.”</h2>
-        </div>`,
-    );
+    refs.noList.classList.remove('is__hiden__lib');
   } else {
+    refs.noList.classList.add('is__hiden__lib');
     const movieGallery = movieGalleryMarkup(watchedMovieCards);
     filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
@@ -55,13 +53,9 @@ function drawQueueFilmList() {
     : [];
   if (queueMovieCards.length === 0) {
     refs.libraryList.innerHTML = '';
-    return refs.libraryList.insertAdjacentHTML(
-      'beforeend',
-      `<div class="no-list">
-            <h2 class="no-list__item">You do not have to queue movies to watch. Add them.</h2>
-        </div>`,
-    );
+    refs.noList.classList.remove('is__hiden__lib');
   } else {
+    refs.noList.classList.add('is__hiden__lib');
     const movieGallery = movieGalleryMarkup(queueMovieCards);
     filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
