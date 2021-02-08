@@ -1,25 +1,38 @@
 import movieGalleryMarkup from '../templates/myLibrary.hbs';
 // import json from './film.json'
 
+
+
 const refs = {
   libraryList: document.getElementById('mylib-home'),
   watchedButton: document.getElementById('watched-button'),
   queueButton: document.getElementById('queue-button'),
+  header: document.querySelector(".header-js"),
+  libHeaderNavigationBtns: document.querySelector(".myLibraryNavigationBox_js"),
+  searchField: document.querySelector(".input-container"),
+  libraryLink: document.querySelector(".library-link"),
+  homeLink: document.querySelector(".home-link")
 };
 
-function drawWatchedFilmList() {
-  const main = document.querySelector('main');
-  const filmGalleryRef = document.querySelector('.film-gallery');
-  const header = document.querySelector('header');
+const filmGalleryRef = document.querySelector('.film-gallery');
 
-  header.innerHTML = '';
-  filmGalleryRef.innerHTML = '';
+function drawWatchedFilmList() {
+  
+  refs.header.classList.add("header-library");
+  refs.libHeaderNavigationBtns.classList.remove("hideBtns");
+  refs.searchField.classList.add("hideBtns");
+  refs.watchedButton.classList.add("orangeBtn");
+  refs.queueButton.classList.remove("orangeBtn");
+  refs.libraryLink.classList.add("current");
+  refs.homeLink.classList.remove("current");
+
+  /* header.innerHTML = ''; */ //// чтобы шапка не чистилась
+  filmGalleryRef.innerHTML = ''; ///очищаем юєльку
   let watchedMovieCards = localStorage.getItem('filmsWatched')
     ? JSON.parse(localStorage.getItem('filmsWatched'))
     : [];
 
-  console.log('gfhhgjhk');
-
+  ////// filmGalleryRef указал это, и теперь пулит куда надо
   if (watchedMovieCards.length == 0) {
     refs.libraryList.insertAdjacentElement(
       'beforeend',
@@ -28,9 +41,9 @@ function drawWatchedFilmList() {
         </div>`,
     );
   } else {
-    refs.libraryList.innerHTML = '';
+    /* refs.libraryList.innerHTML = ''; */
     const movieGallery = movieGalleryMarkup(watchedMovieCards);
-    main.insertAdjacentHTML('beforebegin', movieGallery);
+    filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
 }
 
@@ -51,6 +64,11 @@ function drawWatchedFilmList() {
 // }
 
 function drawQueueFilmList() {
+
+  refs.queueButton.classList.add("orangeBtn");
+  refs.watchedButton.classList.remove("orangeBtn");
+  
+  filmGalleryRef.innerHTML = ''; ///очищаем юєльку
   let queueMovieCards = localStorage.getItem('filmsQueue')
     ? JSON.parse(localStorage.getItem('filmsQueue'))
     : [];
@@ -62,15 +80,31 @@ function drawQueueFilmList() {
         </div>`,
     );
   } else {
-    refs.libraryList.innerHTML = '';
-    queueMovieCards.forEach(movie => {
-      const movieGallery = movieGalleryMarkup(movie);
-      refs.libraryList.insertAdjacentHTML('beforeend', movieGallery);
-    });
+    console.log(queueMovieCards);
+    /* refs.libraryList.innerHTML = ''; */
+    
+      const movieGallery = movieGalleryMarkup(queueMovieCards);
+      filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
+
   }
 }
 
-const libraryLink = document.querySelector('.library-link');
+
 refs.watchedButton.addEventListener('click', drawWatchedFilmList);
 refs.queueButton.addEventListener('click', drawQueueFilmList);
-libraryLink.addEventListener('click', drawWatchedFilmList);
+refs.libraryLink.addEventListener('click', drawWatchedFilmList);
+
+
+
+
+////////////////////////////// это я включаю один хеадер и выключаю
+/* const mainHeadRef = document.querySelector(".header");
+const libHeadRef = document.querySelector('.new-bcg');
+  
+mainHeadRef = style.display = "none";
+
+libHeadRef.style.display = "block"; */
+
+
+
+

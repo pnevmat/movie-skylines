@@ -80,3 +80,4 @@ searchFormRef.addEventListener('submit', event => {
 });
 
 export default { createCardFunc };
+
