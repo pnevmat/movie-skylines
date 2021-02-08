@@ -11,21 +11,33 @@ let pageNumber = 1;
 const filmGalleryRef = document.querySelector('.film-gallery');
 const searchFormRef = document.querySelector('#search-form-js');
 const btnsRef = document.querySelector('.myLibraryNavigationBox_js');
+const myLibrarySectionRef = document.querySelector('#myLib-section');
 
 btnsRef.classList.add('hideBtns');
 
 const createCardFunc = (number, arr) => {
   if (number !== 1) {
-    const moviesToRender = arr.filter((item, index) => index >= (number * 9 - 1) - 8 && index <= (number * 9 - 1));
-    const galleryItemMarkup = filmGalleryTpl(moviesToRender);
-    filmGalleryRef.innerHTML = '';
-    filmGalleryRef.insertAdjacentHTML('beforeend', galleryItemMarkup);
+    otherPagesRenderHandler(number, arr);
   } else {
-    const moviesToRender = arr.filter((item, index) => index <= (number * 9 - 1));
-    const galleryItemMarkup = filmGalleryTpl(moviesToRender);
-    filmGalleryRef.innerHTML = '';
-    filmGalleryRef.insertAdjacentHTML('beforeend', galleryItemMarkup);
+    firstPageRenderHandler(number, arr);
   }
+};
+
+function firstPageRenderHandler(number, arr) {
+  const moviesToRender = arr.filter((item, index) => index <= (number * 9 - 1));
+  renderCardHandler(moviesToRender);
+};
+
+function otherPagesRenderHandler(number, arr) {
+  const moviesToRender = arr.filter((item, index) => index >= (number * 9 - 1) - 8 && index <= (number * 9 - 1));
+  renderCardHandler(moviesToRender);
+};
+
+function renderCardHandler(arr) {
+  const galleryItemMarkup = filmGalleryTpl(arr);
+  filmGalleryRef.innerHTML = '';
+  myLibrarySectionRef.classList.add('is-hiddenLib');
+  filmGalleryRef.insertAdjacentHTML('beforeend', galleryItemMarkup);
 };
 
 const fetchPopularMoviesList = () => {
@@ -40,33 +52,50 @@ const fetchPopularMoviesList = () => {
           renderPages.push(index);
         }
       });
+      const popularFilms = true;
+      localStorage.setItem('queryPopularFilms', popularFilms);
       pagesRenderHandler(renderPages);
-      const fragment = createCardFunc(pageNumber, renderFilms);
-      localStorage.setItem('renderFilms', JSON.stringify(renderFilms));
+      createCardFunc(pageNumber, renderFilms);
+      localStorage.setItem('renderPopularFilms', JSON.stringify(renderFilms));
     });
 };
 
-const fetchGenres = () => {
-  const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${api.API_KEY}&language=en-US`;
-  return fetch(url)
-    .then(response => response.json())
-    .then(({ genres }) => genres);
-};
+// const fetchGenres = () => {
+//   const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${api.API_KEY}&language=en-US`;
+//   return fetch(url)
+//     .then(response => response.json())
+//     .then(({ genres }) => genres);
+// };
 
 fetchPopularMoviesList();
-fetchGenres();
+// fetchGenres();
 
 const apiService = {
   key: '72466121c9676fc22348299f38033287',
   searchQuery: '',
   page: 1,
+  // fetchGenres() {
+  //   const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${api.API_KEY}&language=en-US`;
+  //   return fetch(url)
+  //     .then(response => response.json())
+  //     .then(({ genres }) => {
+  //       const queryOject = genres.filter(item => item.name === `${apiService.searchQuery}`)
+  //       const query = toString(queryOject[0].id);
+  //       apiService.fetchFilms(query);
+  //     });
+  // },
   fetchFilms() {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${this.key}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`;
+    const url = encodeURI(`https://api.themoviedb.org/3/search/movie?api_key=${this.key}&language=en-US&include_adult=false&query=${this.searchQuery}`);
     return fetch(url)
       .then(response => response.json())
       .then(data => {
         const movies = data.results;
-        const fragment = createCardFunc(movies);
+        // console.log(movies);
+        // debugger;
+        const popularFilms = false;
+        localStorage.setItem('queryPopularFilms', popularFilms);
+        localStorage.setItem('renderGenreFilms', JSON.stringify(movies));
+        const fragment = createCardFunc(pageNumber, movies);
         filmGalleryRef.insertAdjacentHTML('beforeend', fragment);
       });
   },

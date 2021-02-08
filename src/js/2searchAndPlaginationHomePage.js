@@ -65,8 +65,15 @@ function toShowBtn(result) {
 
 function onLoadMore(event) {
   const pageNumber = Number(event.target.id);
-  const filmArray = JSON.parse(localStorage.getItem('renderFilms'));
-  createCardFunc(pageNumber, filmArray);
+  const popularFilms = localStorage.getItem('queryPopularFilms');
+  if (popularFilms === true) {
+    const filmArray = JSON.parse(localStorage.getItem('renderPopularFilms'));
+    createCardFunc(pageNumber, filmArray);
+  } else {
+    const filmArray = JSON.parse(localStorage.getItem('renderGenreFilms'));
+    createCardFunc(pageNumber, filmArray);
+  }
+  
   event.preventDefault();
 };  
 
