@@ -16,6 +16,7 @@
   &:hover,
   &:focus {
     filter: drop-shadow(0px 8px 38px #ff6b01);
+    transition: 0.4s;
   }
 
   &--solid {
@@ -64,4 +65,34 @@
   margin-right: 13px;
   border-radius: 5px;
   outline: none;
+}
+
+.myLibraryBtn {
+  display: block;
+  width: 130px;
+  height: 44px;
+  border: 1px solid #fafafa;
+  border-radius: 5px;
+  color: #fafafa;
+  background-color: initial;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 16px;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    filter: drop-shadow(0px 8px 38px #ff6b01);
+    transition: 0.4s;
+    cursor: pointer;
+    border: none;
+  }
+}
+
+.orangeBtn {
+  background-color: #ff6b01;
+  border: none;
 }

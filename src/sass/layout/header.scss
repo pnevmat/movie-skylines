@@ -4,6 +4,7 @@
 .input-icon {
   stroke: #fff;
 }
+
 @media screen and (min-width: 1024px) {
   .header {
     background-repeat: no-repeat;
@@ -131,6 +132,17 @@
     font-weight: 500;
     font-size: 30px;
   }
+  .header-library {
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('./images/hed-lib.jpg');
+  }
 }
 @media screen and (max-width: 767px) {
   .header {
@@ -143,6 +155,19 @@
       ),
       url('./images/hedmob.jpg');
   }
+
+  .header-library {
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('./images/hed-lib.jpg');
+  }
+
   .container.nav-container {
     width: 280px;
     height: 230px;
@@ -222,6 +247,7 @@
   font-size: 12px;
   line-height: 14px;
   outline: none;
+  cursor: pointer;
 }
 .nav-list .library-link {
   position: relative;
@@ -296,29 +322,8 @@
   box-sizing: border-box;
   list-style: none;
   margin: 0;
-  padding: 0 0 65px;
+  padding-top: 45px;
 }
 .myLibraryNavigationListItem:not(:first-child) {
   padding-left: 20px;
-}
-.myLibraryBtn {
-  display: block;
-  width: 130px;
-  height: 44px;
-  border: 1px solid #fafafa;
-  border-radius: 5px;
-  color: #fafafa;
-  background-color: initial;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  line-height: 16px;
-}
-
-.myLibraryBtn:hover {
-  background-color: #ff6b01;
-  filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
-  cursor: pointer;
-  border: none;
 }

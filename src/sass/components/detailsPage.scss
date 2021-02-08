@@ -114,6 +114,7 @@
   &:hover,
   &:focus {
     filter: drop-shadow(-20px 20px 30px #ff6b01);
+    transition: 0.4s;
   }
 
   &:active {
@@ -171,8 +172,8 @@
   .movie {
     display: flex;
     width: 882px;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 90px;
+    margin-bottom: 90px;
     border-top-right-radius: 0px;
 
     &__cover {

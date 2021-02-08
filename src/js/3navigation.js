@@ -6,10 +6,10 @@ const libraryPage = document.querySelector('.myLibraryNavigationBox_js');
 const libraryBtn = document.querySelector('.myLibraryBtn');
 const libraryhed = document.querySelector('.new-bcg');
 
-libraryLink.addEventListener('click', () => {
+/* libraryLink.addEventListener('click', () => {
   activeLibraryPage();
   drawQueueFilmList();
-});
+}); */
 
 homeLink.addEventListener('click', activeHomePage);
 // homePageLogo.addEventListener('click', activeHomePage);
@@ -26,17 +26,17 @@ function activeHomePage() {
   libraryPage.classList.add('hidden');
   // libraryBtn.classList.add('hidden');
   localStorage.setItem('activePage', 'activeHomePage');
-  libraryhed.classList.add('is-hiddenLib');
+  /* libraryhed.classList.add('is-hiddenLib'); */
 }
 
 function activeLibraryPage() {
   header.classList.remove('header');
   header.classList.add('header');
-  libraryLink.classList.add('current');
+  /* libraryLink.classList.add('current'); */   //НА ГЛАВНОЙ ЛИБРАРИ НЕ ДОЛЖНА БЫТЬ ПОДЧЕРКНУТА
   // libraryBtn.classList.remove('library');
   libraryPage.classList.remove('hidden');
   localStorage.setItem('activePage', 'activeLibraryPage');
-  libraryhed.classList.remove('is-hiddenLib');
+  /* libraryhed.classList.remove('is-hiddenLib'); */
 }
 
 // // function activeDetalilsPage() {
