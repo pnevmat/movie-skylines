@@ -1,7 +1,4 @@
 import movieGalleryMarkup from '../templates/myLibrary.hbs';
-// import json from './film.json'
-
-
 
 const refs = {
   libraryList: document.getElementById('mylib-home'),
@@ -42,27 +39,10 @@ function drawWatchedFilmList() {
         </div>`,
     );
   } else {
-    /* refs.libraryList.innerHTML = ''; */
     const movieGallery = movieGalleryMarkup(watchedMovieCards);
     filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
 }
-
-// =======
-//     let watchedMovieCards = localStorage.getItem('filmsWatched')? JSON.parse(localStorage.getItem('filmsWatched')) : [];
-//   if (watchedMovieCards.length == 0) {
-//         refs.libraryList.insertAdjacentElement('beforeend',
-//          `<div class="no-list">
-//             <h2 class="no-list__item">“You do not have watched movies. Add them.”</h2>
-//         </div>`);
-//   } else {
-//         refs.libraryList.innerHTML = '';
-//         watchedMovieCards.forEach(movie => {
-//         const movieGallery = movieGalleryMarkup(movie);
-//         refs.libraryList.insertAdjacentHTML('beforeend', movieGallery);
-//     });
-//   }
-// }
 
 function drawQueueFilmList() {
 
@@ -82,30 +62,14 @@ function drawQueueFilmList() {
         </div>`,
     );
   } else {
-    console.log(queueMovieCards);
-    /* refs.libraryList.innerHTML = ''; */
-    
-      const movieGallery = movieGalleryMarkup(queueMovieCards);
-      filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
-
+    const movieGallery = movieGalleryMarkup(queueMovieCards);
+    filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
 }
-
 
 refs.watchedButton.addEventListener('click', drawWatchedFilmList);
 refs.queueButton.addEventListener('click', drawQueueFilmList);
 refs.libraryLink.addEventListener('click', drawWatchedFilmList);
-
-
-
-
-////////////////////////////// это я включаю один хеадер и выключаю
-/* const mainHeadRef = document.querySelector(".header");
-const libHeadRef = document.querySelector('.new-bcg');
-  
-mainHeadRef = style.display = "none";
-
-libHeadRef.style.display = "block"; */
 
 
 
