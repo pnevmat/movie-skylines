@@ -1,20 +1,27 @@
 import notify from './data/pnotify';
 import createCardFunc from './1initialHomePage';
-import { paginator } from "pagination";
+import pagesRenderer from '../templates/2searchAndPlaginationHomePage.hbs';
+// import fetchPopularMoviesList from './1initialHomePage';
+// import { paginator } from "pagination";
 import api from './apiService';
 
 
-const paginationBtn = document.querySelector('.pgn');
+const paginationContainerRef = document.querySelector('.pages-container');
 const searchForm = document.querySelector('.header-input');
 const filmGallery = document.querySelector('.film-gallery');
 const elem = document.querySelector('.error');
-console.log(elem);
-console.log(filmGallery);
-console.log(searchForm);
 
-let paginat = new pagination.SearchPaginator({prelink: '/', current: 1,rowsPerPage: 9, totalResult: 1000});
+// console.log(elem);
+// console.log(filmGallery);
+// console.log(searchForm);
 
-paginationBtn.addEventListener('click', onLoadMore);
+// Функция рендеринга кнопок пагинатора
+const pagesRenderHandler = arr => {
+  const pagesMarkup = pagesRenderer(arr);
+  return paginationContainerRef.insertAdjacentHTML('afterbegin', pagesMarkup);
+};
+
+paginationContainerRef.addEventListener('click', onLoadMore);
 searchForm.addEventListener('submit', searchFilms);
 //-----------------------------------------------------------------------------------------------------
 function searchFilms(e) {
@@ -57,11 +64,11 @@ function toShowBtn(result) {
 };
 
 function onLoadMore(event) {
+  const pageNumber = Number(event.target.id);
+  const filmArray = JSON.parse(localStorage.getItem('renderFilms'));
+  createCardFunc(pageNumber, filmArray);
   event.preventDefault();
-  api.setPage();
-  paginat.getPaginationData('/', 1, 9, 943);
-  api.fetchFilms(null).then(toMakeMarkup);
 };  
 
-
+export default pagesRenderHandler;
 

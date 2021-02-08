@@ -49,20 +49,22 @@
 }
 
 .pgn {
-  display: inline-flex;
   padding: 13px 16px 13px 16px;
-  align-items: center;
+  border: none;
+  background-color: #ffffff;
   font-size: 12px;
   line-height: 16px;
   color: #000000;
   cursor: pointer;
 }
 
-.pgn:hover {
+.pgn:hover,
+.pgn:focus {
   background-color: #ff6b01;
   margin-left: 13px;
   margin-right: 13px;
   border-radius: 5px;
+  outline: none;
 }
 
 .myLibraryBtn {
