@@ -37,35 +37,4 @@ export default class ApiService {
     });
     
   };
-
-    // fetchGenres() {
-  //   let genres = '';
-  //   const params = `genre/movie/list?api_key=${this.API_KEY}&language=${this.language}&page=${this.pageNumber}`;
-  //   const url = `${this.baseUrl}${params}`;
-  //   return fetch(url)
-  //   .then((res) => res.json())
-  //   .then(({ data }) => {
-  //     data.forEach(({data}) => {
-  //       genres += data[i].name;
-  //       console.log(genres);
-  //     });
-  //     return genres;
-  //   })
-  // },
-  //---------------------------------------------------------------------------------------------
-  // fetchPopularsMoviesList(val) {
-  //   this.pageNumber = val;
-  //   const params = `movie/popular?api_key=${this.API_KEY}&language=${this.language}&page=${this.pageNumber}`;
-  //   const url = `${this.baseUrl}${params}`;
-  //   return fetch(url)
-  //   .then((res) => res.json())
-  //   .then((results ) => results)
-  //   .then((result) => {
-  //     // createCardFunc(result);
-  //     renderFilms = result.results;
-  //     // return renderFilms; 
-  //     return result;   
-  //   });
-  // },
-  
 };
