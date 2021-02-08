@@ -1,7 +1,7 @@
 {{#each this}}
-<li id={{'imdb_id'}} class="card__container">
-    <img class="home__list-item" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}">
-    <h2 class="card__title">{{original_title}}</h2>
+<li class="card__container">
+    <img class="home__list-item" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" data-id="{{id}}">
+    <h2 class="card__title">{{title}}</h2>
     <p class="card__film-info">{{#each genres}}<span>{{this.name}}</span> {{/each}}| {{release_date}}</p>
     <span class="popularity__film">{{vote_average}}</span>
     </p>
