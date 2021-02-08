@@ -34,7 +34,8 @@ function drawWatchedFilmList() {
 
   ////// filmGalleryRef указал это, и теперь пулит куда надо
   if (watchedMovieCards.length == 0) {
-    refs.libraryList.insertAdjacentElement(
+    refs.libraryList.innerHTML = '';
+    refs.libraryList.insertAdjacentHTML(
       'beforeend',
       `<div class="no-list">
             <h2 class="no-list__item">“You do not have watched movies. Add them.”</h2>
@@ -73,7 +74,8 @@ function drawQueueFilmList() {
     ? JSON.parse(localStorage.getItem('filmsQueue'))
     : [];
   if (queueMovieCards.length === 0) {
-    return refs.libraryList.insertAdjacentElement(
+    refs.libraryList.innerHTML = '';
+    return refs.libraryList.insertAdjacentHTML(
       'beforeend',
       `<div class="no-list">
             <h2 class="no-list__item">You do not have to queue movies to watch. Add them.</h2>
