@@ -43,7 +43,7 @@
 }
 
 .paginationSection {
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 60px;
   text-align: center;
 }
@@ -60,7 +60,7 @@
 
   &:hover,
   &:focus {
-    background-color: #FF6B01;
+    background-color: #ff6b01;
     margin-left: 13px;
     margin-right: 13px;
     border-radius: 5px;
@@ -72,7 +72,7 @@
 
 .paginator-previous,
 .paginator-next {
-  background: #F7F7F7;
+  background: #f7f7f7;
   border-radius: 5px;
 }
 
@@ -108,6 +108,12 @@
 .orangeBtn {
   background-color: #ff6b01;
   border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .paginationSection {
+    padding-top: 0px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
