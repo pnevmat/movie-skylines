@@ -9,7 +9,8 @@ const refs = {
   searchField: document.querySelector(".input-container"),
   libraryLink: document.querySelector(".library-link"),
   homeLink: document.querySelector(".home-link"),
-    noList: document.querySelector('.no-list__item')
+  noList: document.querySelector('.no-list__item'),
+  paginator: document.querySelector('.paginator')
 
 };
 
@@ -35,8 +36,11 @@ export function drawWatchedFilmList() {
   if (watchedMovieCards.length == 0) {
     refs.libraryList.innerHTML = '';
     refs.noList.classList.remove('is__hiden__lib');
+    refs.paginator.classList.add('pagination_lib_hiden')
   } else {
     refs.noList.classList.add('is__hiden__lib');
+    refs.paginator.classList.remove('pagination_lib_hiden')
+
     const movieGallery = movieGalleryMarkup(watchedMovieCards);
     filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
@@ -54,8 +58,10 @@ export function drawQueueFilmList() {
   if (queueMovieCards.length === 0) {
     refs.libraryList.innerHTML = '';
     refs.noList.classList.remove('is__hiden__lib');
+    refs.paginator.classList.add('pagination_lib_hiden')
   } else {
     refs.noList.classList.add('is__hiden__lib');
+    refs.paginator.classList.remove('pagination_lib_hiden')
     const movieGallery = movieGalleryMarkup(queueMovieCards);
     filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
