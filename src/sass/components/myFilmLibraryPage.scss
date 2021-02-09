@@ -57,6 +57,7 @@
   background: #ff6b08;
   border-radius: 5px;
   display: inline-block;
+  margin-left: 5px;
 }
 
 .new-bcg {
@@ -163,4 +164,15 @@
   margin-bottom: 2px;
   background-color: #ff6b08;
   color: #f3f6f6;
+}
+.is__hiden__lib{
+  display: none;
+  
+}
+.no-list__item{
+font-size:32px;
+    line-height: 1.14;
+    padding-top: 90px;
+    text-align: center;
+    color: #be3309;
 }
