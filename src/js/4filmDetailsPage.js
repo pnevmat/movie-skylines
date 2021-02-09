@@ -1,11 +1,13 @@
 import filmDetailsTpl from '../templates/filmDetails.hbs';
+import { drawWatchedFilmList, drawQueueFilmList } from './5libraryPage.js';
+import ApiService from './apiService';
 
-const apiKey = '72466121c9676fc22348299f38033287';
-
-
+const api = new ApiService();
 const movieRef = document.querySelector(".movie");
 const movieListRef = document.querySelector(".film-gallery");
 const backdropRef = document.querySelector(".backdrop");
+const headQueueBtnRef = document.getElementById('queue-button');
+const headWatchedBtnRef = document.getElementById('watched-button');
 
 movieListRef.addEventListener('click', createMovieDetails);
 backdropRef.addEventListener('click', backdropClickHandler);
@@ -18,7 +20,7 @@ function createMovieDetails(e) {
   
   if (e.target.hasAttribute('data-id')) { 
     const movieId = e.target.getAttribute('data-id');
-    let url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
+    let url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api.API_KEY}&language=en-US`;
   
     
     fetch(url)
@@ -122,9 +124,9 @@ function monitorButtonStatusText(movieId) {
 
 //toggle btn Queue name and toggle id in local storage
 function toggleToQueue() {
+  
   let queueArr = [];
   const queueBtnRef = document.querySelector(".js-queue");
-  
   
   if (queueBtnRef.innerHTML === 'ADD TO QUEUE') {
     queueBtnRef.innerHTML = 'DELETE FROM QUEUE'
@@ -138,10 +140,16 @@ function toggleToQueue() {
     queueArr = queueArr.filter(n => n.id !== selectFilm.id);
     localStorage.setItem('filmsQueue', JSON.stringify(queueArr));
   };
+
+  if (headQueueBtnRef.classList.contains("orangeBtn")) {
+    drawQueueFilmList();
+    closeModalHandler();
+  };
 };
 
 //toggle btn Watched name and toggle id in local storage
 function toggleToWatched() {
+  
   let watchedArr = [];
   const watchedBtnRef = document.querySelector(".js-watched"); 
   
@@ -156,5 +164,10 @@ function toggleToWatched() {
     watchedArr = JSON.parse(localStorage.getItem('filmsWatched'));
     watchedArr = watchedArr.filter(n => n.id !== selectFilm.id);
     localStorage.setItem('filmsWatched', JSON.stringify(watchedArr));
+  };
+
+  if (headWatchedBtnRef.classList.contains("orangeBtn")) {
+    drawWatchedFilmList();
+    closeModalHandler();
   };
 };
