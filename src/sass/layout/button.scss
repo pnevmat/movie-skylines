@@ -1,5 +1,5 @@
 .button {
-  min-width: 136px;
+  width: 136px;
   min-height: 46px;
   border-radius: 5px;
   border-width: 0px;
@@ -90,9 +90,19 @@
     cursor: pointer;
     border: none;
   }
+
+  &:active {
+    background-color: #cf5804;
+  }
 }
 
 .orangeBtn {
   background-color: #ff6b01;
   border: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .button {
+    width: 150px;
+  }
 }

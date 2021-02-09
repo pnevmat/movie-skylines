@@ -13,21 +13,21 @@
   <h1 class="movie__title">{{title}}</h1>
   <ul class="movie__characteristics">
     <li>
-      <span>Vote / Votes</span>
+      <span class="movie__characteristics--title">Vote / Votes</span>
       <span class="movie__characteristics--orange">{{vote_average}}</span>
-      /
+      &nbsp;/&nbsp;
       <span class="movie__characteristics--grey">{{vote_count}}</span>
     </li>
     <li>
-      <span>Popularity</span>
+      <span class="movie__characteristics--title">Popularity</span>
       <span class="movie__characteristics--black">{{popularity}}</span>
     </li>
     <li>
-      <span>Original Title</span>
+      <span class="movie__characteristics--title">Original Title</span>
       <span class="movie__characteristics--black">{{original_title}}</span>
     </li>
     <li>
-      <span>Genre</span>
+      <span class="movie__characteristics--title">Genre</span>
       <span class="movie__characteristics--black">
         {{#each this.genres}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}
 

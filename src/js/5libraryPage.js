@@ -13,7 +13,7 @@ const refs = {
 
 const filmGalleryRef = document.querySelector('.film-gallery');
 
-function drawWatchedFilmList() {
+export function drawWatchedFilmList() {
   
   refs.header.classList.add("header-library");
   refs.libHeaderNavigationBtns.classList.remove("hideBtns");
@@ -44,7 +44,7 @@ function drawWatchedFilmList() {
   }
 }
 
-function drawQueueFilmList() {
+export function drawQueueFilmList() {
 
   refs.queueButton.classList.add("orangeBtn");
   refs.watchedButton.classList.remove("orangeBtn");
