@@ -37,6 +37,9 @@ function searchFilms(e) {
           elem.classList.add('hidden');
           input.value = "";
           filmGallery.innerHTML = '';
+          const popularFilms = false;
+          localStorage.setItem('queryPopularFilms', popularFilms);
+          localStorage.setItem('renderGenreFilms', JSON.stringify(result));
       }
       return toMakeMarkup(result);
     }); 
@@ -46,20 +49,20 @@ function toMakeMarkup(result) {
   createCardFunc(apiService.pageNumber, result);
   // window.scrollTo({top: filmGallery.scrollHeight, behavior: 'smooth'});  
   toShowBtn(result);
-  onLoadMore(result);
+  // onLoadMore(result);
 };    
   
 function toShowBtn(result) {
   if (result.length > 9) {
-    return paginationBtn.classList.remove('hidden');
+    return paginationContainerRef.classList.remove('hidden');
   } 
-  return paginationBtn.classList.add('hidden'); 
+  return paginationContainerRef.classList.add('hidden'); 
 };
 
 function onLoadMore(event) {
   const pageNumber = Number(event.target.id);
   const popularFilms = localStorage.getItem('queryPopularFilms');
-  if (popularFilms === true) {
+  if (popularFilms === 'true') {
     const filmArray = JSON.parse(localStorage.getItem('renderPopularFilms'));
     createCardFunc(pageNumber, filmArray);
   } else {
