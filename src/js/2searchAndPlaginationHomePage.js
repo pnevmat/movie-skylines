@@ -6,6 +6,7 @@ import ApiService from './apiService';
 const apiService = new ApiService();
 const paginationContainerRef = document.querySelector('.pages-container');
 const searchForm = document.querySelector('#search-form-js');
+const input = document.querySelector('.header-input');
 const filmGallery = document.querySelector('.film-gallery');
 const elem = document.querySelector('.error');
 
@@ -26,29 +27,30 @@ function searchFilms(e) {
     return;
   }; 
     apiService.resetPage();
-    apiService.fetchFilms(inputValue).then(films => toMakeMarkup(films)).catch(notify.errorMessage); 
-    elem.classList.add('hidden');
-    // inputValue = "";
-    filmGallery.innerHTML = '';
-    
-  };
+    apiService.fetchFilms(inputValue).then(result => {
+      console.log(result);
+      if(result === [] || result.length === 0) {
+        elem.classList.remove('hidden');
+        input.value = "";
+        return;
+      } else {   
+          elem.classList.add('hidden');
+          input.value = "";
+          filmGallery.innerHTML = '';
+      }
+      return toMakeMarkup(result);
+    }); 
+};
   
-  function toMakeMarkup(result) {
-    
-    if(result.length === 0) {
-      notify.noticeMessage();
-      return;
-    };
-      createCardFunc(apiService.pageNumber, result);
-      window.scrollTo({
-        top: document.documentElement.scrollHeight, behavior: 'smooth'
-      });  
-      toShowBtn(result);
-      onLoadMore(result);
+function toMakeMarkup(result) { 
+  createCardFunc(apiService.pageNumber, result);
+  // window.scrollTo({top: filmGallery.scrollHeight, behavior: 'smooth'});  
+  toShowBtn(result);
+  onLoadMore(result);
 };    
   
 function toShowBtn(result) {
-  if (result.results.length > 9) {
+  if (result.length > 9) {
     return paginationBtn.classList.remove('hidden');
   } 
   return paginationBtn.classList.add('hidden'); 
@@ -69,4 +71,3 @@ function onLoadMore(event) {
 };  
 
 export default pagesRenderHandler;
-
