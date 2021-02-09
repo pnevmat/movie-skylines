@@ -27,7 +27,7 @@ li {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   padding: 20px;
   padding-bottom: 0;
   width: 280px;
@@ -37,7 +37,7 @@ li {
     padding-top: 60px;
     padding-left: 75px;
     padding-right: 75px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
   }
 
   @media screen and (min-width: 1024px) {
