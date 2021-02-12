@@ -1,4 +1,4 @@
-import initialHomeJs from './1initialHomePage';
+import initialHomeJs from '../1initialHomePage';
 
 export default class ApiService {
   constructor() {
@@ -21,7 +21,15 @@ export default class ApiService {
   resetPage = () => {
     return this.pageNumber = 1;
   };
-  
+
+  fetchPopularMoviesList = () => {
+    const params = `movie/popular?api_key=${this.API_KEY}&language=${this.language}&page=${this.pageNumber}`;
+    const url = `${this.baseUrl}${params}`;
+    return fetch(url)
+      .then(response => response.json())
+      .then(data => data.results);
+  };
+
   fetchFilms = (inputValue) => {
     if (inputValue && inputValue.length > 0) {
       this.queryValue = inputValue;
@@ -31,8 +39,6 @@ export default class ApiService {
     return fetch(url)
     .then((res) => res.json())
     .then((result) => {
-      // renderFilms = result.results;
-      // return renderFilms; 
       return result.results;   
     });
     
