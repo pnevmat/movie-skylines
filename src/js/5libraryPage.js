@@ -44,7 +44,7 @@ export function drawWatchedFilmList() {
     const movieGallery = movieGalleryMarkup(watchedMovieCards);
     filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
-}
+};
 
 export function drawQueueFilmList() {
 
@@ -65,7 +65,7 @@ export function drawQueueFilmList() {
     const movieGallery = movieGalleryMarkup(queueMovieCards);
     filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   }
-}
+};
 
 refs.watchedButton.addEventListener('click', drawWatchedFilmList);
 refs.queueButton.addEventListener('click', drawQueueFilmList);

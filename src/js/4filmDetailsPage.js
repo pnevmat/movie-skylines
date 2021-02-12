@@ -1,6 +1,6 @@
 import filmDetailsTpl from '../templates/filmDetails.hbs';
 import { drawWatchedFilmList, drawQueueFilmList } from './5libraryPage.js';
-import ApiService from './apiService';
+import ApiService from './utils/apiService';
 
 const api = new ApiService();
 const movieRef = document.querySelector(".movie");
@@ -15,7 +15,7 @@ backdropRef.addEventListener('click', backdropClickHandler);
 let selectFilm = {};
 
 
-//create modal content with template
+//Создает контент модалки из шаблона
 function createMovieDetails(e) {
   
   if (e.target.hasAttribute('data-id')) { 
@@ -41,7 +41,7 @@ function createMovieDetails(e) {
     };
 };
 
-//open modal
+//Открывает модалку
 function openModalHandler() {
 
   const watchedBtnRef = document.querySelector(".js-watched");
@@ -57,7 +57,7 @@ function openModalHandler() {
   queueBtnRef.addEventListener('click', toggleToQueue);
 };
 
-//close modal
+//Закрывает модалку и чистит слушатели событий
 function closeModalHandler() {
   const watchedBtnRef = document.querySelector(".js-watched");
   const queueBtnRef = document.querySelector(".js-queue");
@@ -73,14 +73,14 @@ function closeModalHandler() {
   backdropRef.classList.add("is-hidden");
 };
 
-//close modal by Esc
+//Закрывает модалку по клавише Esc
 function closeModalByEsc(event) {
   if (event.code === 'Escape') {
     closeModalHandler();
   };
 };
 
-//close modal by click on backdrop
+//Закрывает модалку по клику в бэкдроп
 function backdropClickHandler(event) {
   if (event.target === event.currentTarget) {
     closeModalHandler();
@@ -99,7 +99,7 @@ function createEmptyLocalStorage() {
   };
 };
 
-//set text content to buttons on modal
+//Добавляет текстовый контент в кнопки модалки
 function monitorButtonStatusText(movieId) {
   createEmptyLocalStorage();
 
@@ -122,7 +122,7 @@ function monitorButtonStatusText(movieId) {
   };
 };
 
-//toggle btn Queue name and toggle id in local storage
+//Переключает текст на кнопке Queue и переключает id в локал сторедж
 function toggleToQueue() {
   
   let queueArr = [];
@@ -147,7 +147,7 @@ function toggleToQueue() {
   };
 };
 
-//toggle btn Watched name and toggle id in local storage
+//Переключает текст на кнопке Watched и переключает id в локал сторедж
 function toggleToWatched() {
   
   let watchedArr = [];
