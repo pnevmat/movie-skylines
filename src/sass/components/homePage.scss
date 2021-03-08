@@ -2,7 +2,7 @@
   padding: 20px;
   padding-bottom: 0;
   @media screen and (max-width: 767px) {
-    width: 280px;
+    max-width: 280px;
     margin: 0;
   }
   @media screen and (min-width: 768px) {
@@ -11,14 +11,10 @@
     padding-top: 60px;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 618px;
-    // padding-left: 75px;
-    // padding-right: 75px;
+    max-width: 618px;
   }
   @media screen and (min-width: 1024px) {
-    width: 884px;
-    // padding-left: 70px;
-    // padding-right: 70px;
+    max-width: 884px;
   }
 }
 
@@ -26,13 +22,13 @@
 .film-gallery-item {
   @media screen and (max-width: 767px) {
     margin-bottom: 20px;
-    width: 280px;
+    max-width: 280px;
   }
 
   @media screen and (min-width: 768px) {
     margin-right: 30px;
     margin-bottom: 30px;
-    width: 293px;
+    max-width: 293px;
   }
 
   &:nth-child(2n) {
@@ -45,7 +41,7 @@
   }
 
   @media screen and (min-width: 1024px) {
-    width: 274px;
+    max-width: 274px;
   }
   &:nth-child(3n) {
     @media screen and (min-width: 1024px) {
@@ -56,17 +52,19 @@
 
 .film-img {
   @media screen and (max-width: 767px) {
-    width: 280px;
-    height: 402px;
+    width: 100%;
+    max-width: 280px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 293px;
+    width: 100%;
+    max-width: 293px;
     height: 398px;
   }
 
   @media screen and (min-width: 1024px) {
-    width: 274px;
+    width: 100%;
+    max-width: 274px;
     height: 398px;
   }
   border-radius: 5px;
@@ -74,14 +72,22 @@
 }
 
 .film-name {
+  @media screen and (max-width: 158px) {
+    text-align: center;
+  }
   margin: 0;
   margin-top: 10px;
   text-transform: uppercase;
 }
 
 .film-stat {
-  display: flex;
-  flex-direction: row;
+  @media screen and (max-width: 158px) {
+    text-align: center;
+  }
+  @media screen and (min-width: 159px) {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .film-description {

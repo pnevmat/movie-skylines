@@ -1,6 +1,8 @@
 import filmDetailsTpl from '../templates/filmDetails.hbs';
+import unposteredFilmDetailsTpl from '../templates/unposteredFilmDetails.hbs';
 import { drawWatchedFilmList, drawQueueFilmList } from './5libraryPage.js';
 import ApiService from './utils/apiService';
+import placeholder from '../images/no-poster.png';
 
 const api = new ApiService();
 const movieRef = document.querySelector(".movie");
@@ -26,7 +28,12 @@ function createMovieDetails(e) {
     fetch(url)
       .then(response => response.json())
       .then((data) => {
-        movieRef.insertAdjacentHTML('beforeend', filmDetailsTpl(data));
+        if (data.poster_path === null) {
+          data.poster_path = placeholder;
+          movieRef.insertAdjacentHTML('beforeend', unposteredFilmDetailsTpl(data));
+        } else {
+          movieRef.insertAdjacentHTML('beforeend', filmDetailsTpl(data));
+        }
         
         selectFilm.id = movieId;
         selectFilm.title = data.title;
