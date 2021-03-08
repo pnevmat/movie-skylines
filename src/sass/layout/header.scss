@@ -31,31 +31,45 @@
 .container.nav-container {
   display: inline-block;
   @media screen and (max-width: 767px) {
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 618px;
+    width: 100%;
+    max-width: 618px;
   }
   @media screen and (min-width: 1024px) {
-    width: 882px;
+    width: 100%;
+    max-width: 882px;
   }
   height: 230px;
 }
 
 // Стили блока логотипа и навигации
 .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  @media screen and (max-width: 184px) {
+    text-align: center;
+  }
+  @media screen and (min-width: 185px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
   padding-top: 46px;
   margin-bottom: 40px;
 }
 
-@media screen and (min-width: 768px) {
-  .logo-header {
+
+.logo-header {
+  @media screen and (max-width: 184px) {
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
   }
+}
+  @media screen and (min-width: 768px) {
   .input-wrap {
     width: 336px;
     position: relative;
@@ -63,8 +77,10 @@
 }
 
 .logo-link {
-  display: flex;
-  align-items: center;
+  @media screen and (min-width: 185px) {
+    display: flex;
+    align-items: center;
+  }
   text-decoration: none;
 }
 
@@ -180,13 +196,14 @@
 
 .header-input {
   @media screen and (max-width: 767px) {
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
   }
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 336px;
+    max-width: 336px;
   }
   @media screen and (min-width: 1024px) {
-    width: 336px;
+    max-width: 336px;
   }
   height: 20px;
   border: 0;
@@ -229,11 +246,18 @@
 .myLibraryNavigationList {
   display: inline-flex;
   list-style: none;
-  padding-top: 45px;
+  @media screen and (min-width: 185px) {
+    padding-top: 45px;
+  }
 }
 
 .myLibraryNavigationListItem:not(:last-child) {
-  margin-right: 20px;
+  @media screen and (max-width: 240px) {
+    margin-right: 10px;
+  }
+  @media screen and (min-width: 241px) {
+    margin-right: 20px;
+  }
 }
 
 .header-library {
