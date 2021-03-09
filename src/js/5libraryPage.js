@@ -48,8 +48,8 @@ export function drawWatchedFilmList() {
     refs.noList.classList.remove('is__hiden__lib');
     refs.paginator.classList.add('pagination_lib_hiden');
   } else if (watchedMovieCards.length <= 9) {
-    const movieGallery = movieGalleryMarkup(watchedMovieCards);
-    filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
+    let pageNumber = LibraryApi.resetPage();
+    createCardFunc(pageNumber, watchedMovieCards);
     refs.paginator.classList.add('pagination_lib_hiden');
   } else {
     refs.noList.classList.add('is__hiden__lib');
