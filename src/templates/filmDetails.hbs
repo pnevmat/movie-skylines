@@ -13,10 +13,12 @@
   <h1 class="movie__title">{{title}}</h1>
   <ul class="movie__characteristics">
     <li>
-      <span class="movie__characteristics--title">Vote / Votes</span>
-      <span class="movie__characteristics--orange">{{vote_average}}</span>
-      &nbsp;/&nbsp;
-      <span class="movie__characteristics--grey">{{vote_count}}</span>
+        <span class="movie__characteristics--title">Vote / Votes</span>
+        <div>
+          <span class="movie__characteristics--orange">{{vote_average}}</span>
+          &nbsp;/&nbsp;
+          <span class="movie__characteristics--grey">{{vote_count}}</span>
+        </div>
     </li>
     <li>
       <span class="movie__characteristics--title">Popularity</span>
@@ -39,7 +41,7 @@
     <p class="movie__description">{{overview}}</p>
   </div>
   <div class="button-container">
-    <button type="submit" class="button button--solid js-watched"></button>
-    <button type="submit" class="button button--hollow js-queue"></button>
+    <button type="submit" class="button button--solid modal-button js-watched"></button>
+    <button type="submit" class="button button--hollow modal-button js-queue"></button>
   </div>
 </div>
