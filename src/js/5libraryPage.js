@@ -15,7 +15,8 @@ const refs = {
   searchField: document.querySelector(".input-container"),
   libraryLink: document.querySelector(".library-link"),
   homeLink: document.querySelector(".home-link"),
-  noList: document.querySelector('.no-list__item'),
+  noListWtched: document.getElementById('watched-item'),
+  noListQueue: document.getElementById('queue-item'),
   paginator: document.querySelector('.paginator')
 
 };
@@ -41,18 +42,21 @@ export function drawWatchedFilmList() {
 
   localStorage.setItem('activePage', 'activeLibraryPage');
   localStorage.setItem('queryWatchedFilms', 'true');
+
+  refs.noListQueue.classList.add('is__hiden__lib');
   
   ////// filmGalleryRef указал это, и теперь пулит куда надо
   if (watchedMovieCards.length == 0) {
     refs.libraryList.innerHTML = '';
-    refs.noList.classList.remove('is__hiden__lib');
+    refs.noListWtched.classList.remove('is__hiden__lib');
     refs.paginator.classList.add('pagination_lib_hiden');
   } else if (watchedMovieCards.length <= 9) {
+    refs.noListWtched.classList.add('is__hiden__lib');
+    refs.paginator.classList.add('pagination_lib_hiden');
     let pageNumber = LibraryApi.resetPage();
     createCardFunc(pageNumber, watchedMovieCards);
-    refs.paginator.classList.add('pagination_lib_hiden');
   } else {
-    refs.noList.classList.add('is__hiden__lib');
+    refs.noListWtched.classList.add('is__hiden__lib');
     refs.paginator.classList.remove('pagination_lib_hiden');
     let pageNumber = LibraryApi.resetPage();
     pagesArrayHandler(watchedMovieCards);
@@ -69,17 +73,21 @@ export function drawQueueFilmList() {
   let queueMovieCards = localStorage.getItem('filmsQueue')
     ? JSON.parse(localStorage.getItem('filmsQueue'))
     : [];
-    localStorage.setItem('queryWatchedFilms', 'false');
+
+  localStorage.setItem('queryWatchedFilms', 'false');
+
+  refs.noListWtched.classList.add('is__hiden__lib');
+
   if (queueMovieCards.length === 0) {
     refs.libraryList.innerHTML = '';
-    refs.noList.classList.remove('is__hiden__lib');
+    refs.noListQueue.classList.remove('is__hiden__lib');
     refs.paginator.classList.add('pagination_lib_hiden');
   } else if (queueMovieCards.length <= 9) {
     refs.paginator.classList.add('pagination_lib_hiden');
     const movieGallery = movieGalleryMarkup(queueMovieCards);
     filmGalleryRef.insertAdjacentHTML('beforeend', movieGallery);
   } else {
-    refs.noList.classList.add('is__hiden__lib');
+    refs.noListQueue.classList.add('is__hiden__lib');
     refs.paginator.classList.remove('pagination_lib_hiden');
     let pageNumber = LibraryApi.resetPage();
     pagesArrayHandler(queueMovieCards);

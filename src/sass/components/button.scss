@@ -139,3 +139,19 @@
   background-color: #ff6b01;
   border: none;
 }
+
+.modal-button {
+  @media screen and (max-width: 199px) {
+    width: 100%;
+    max-width: 52px;
+    font-size: 8px;
+  }
+  @media screen and (min-width: 200px) and (max-width: 279px) {
+    width: 100%;
+    max-width: 78px;
+  }
+  @media screen and (min-width: 280px) and (max-width: 319px) {
+    width: 100%;
+    max-width: 95px;
+  }
+}

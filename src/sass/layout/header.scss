@@ -71,7 +71,8 @@
 }
   @media screen and (min-width: 768px) {
   .input-wrap {
-    width: 336px;
+    width: 100%;
+    max-width: 200px;
     position: relative;
   }
 }
@@ -194,6 +195,12 @@
   }
 }
 
+.header-form {
+  border-bottom: 0.5px solid;
+  border-color: white;
+  text-align: left;
+}
+
 .header-input {
   @media screen and (max-width: 767px) {
     width: 100%;
@@ -207,9 +214,7 @@
   }
   height: 20px;
   border: 0;
-  border-bottom: 0.5px solid;
   background-color: transparent;
-  border-color: white;
   color: white;
   outline: none;
 }
