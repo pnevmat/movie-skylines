@@ -1,0 +1,229 @@
+.home__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 25px 0 0;
+  margin-top: 15px 70px;
+  list-style: none;
+}
+
+.card__container {
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+    max-width: 280px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 30px;
+    margin-bottom: 30px;
+    max-width: 293px;
+  }
+
+  &:nth-child(2n) {
+    @media screen and (min-width: 768px) {
+      margin-right: 0;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-right: 30px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 274px;
+  }
+  &:nth-child(3n) {
+    @media screen and (min-width: 1024px) {
+      margin-right: 0;
+    }
+  }
+}
+
+// Стили карточки фильма
+.home__list-item {
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 100%;
+    max-width: 293px;
+    height: 398px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 100%;
+    max-width: 274px;
+    height: 398px;
+  }
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card__title {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.card__film-info {
+  margin: 0px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ff6b08;
+}
+
+.popularity__film {
+  display: inline-block;
+  width: 36px;
+  height: 16px;
+  margin-left: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  vertical-align: text-bottom;
+  background: #ff6b08;
+}
+
+.new-bcg {
+  background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url('./images/hed-lib.jpg');
+
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.is-hiddenLib {
+  display: none;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 41px;
+  margin-bottom: 37px;
+}
+
+.logo,
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+}
+
+.logo-txt {
+  display: none;
+  @media screen and (min-width: 320px) {
+    display: block;
+  }
+}
+
+.logo-txt {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: none;
+  }
+  margin-left: 12px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  color: #fff;
+}
+
+.nav-mylibrari {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav-btn {
+  border: none;
+  margin-left: 40px;
+  outline: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header-bottom {
+  padding-bottom: 65px;
+}
+
+.is-active-btn::after {
+  display: block;
+  content: '';
+  width: 75px;
+  height: 3px;
+  background-color: #ff6b08;
+}
+
+.button-list {
+  display: flex;
+  justify-content: center;
+}
+
+.button-item:not(:last-child) {
+  margin-right: 15px;
+}
+
+.btn {
+  min-width: 136px;
+  padding: 12px 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: #fff;
+  border-color: #e5e5e5;
+  background-color: transparent;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: #ff6b08;
+}
+
+.active-nav-button {
+  border-bottom: none;
+  margin-bottom: 2px;
+  color: #f3f6f6;
+  background-color: #ff6b08;
+}
+
+.is__hiden__lib{
+  display: none;
+  
+}
+
+.no-list__item{
+  padding-top: 90px;
+  font-size:32px;
+  line-height: 1.14;
+  text-align: center;
+  color: #be3309;
+}
+
+.pagination_lib_hiden{
+  display: none;
+}

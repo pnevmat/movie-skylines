@@ -1,0 +1,120 @@
+.film-gallery {
+  padding: 20px;
+  padding-bottom: 0;
+  @media screen and (max-width: 767px) {
+    max-width: 280px;
+    margin: 0;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 60px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    max-width: 618px;
+  }
+  @media screen and (min-width: 1024px) {
+    max-width: 884px;
+  }
+}
+
+// Стили карточки фильма
+.film-gallery-item {
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+    max-width: 280px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 30px;
+    margin-bottom: 30px;
+    max-width: 293px;
+  }
+
+  &:nth-child(2n) {
+    @media screen and (min-width: 768px) {
+      margin-right: 0;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-right: 30px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 274px;
+  }
+  &:nth-child(3n) {
+    @media screen and (min-width: 1024px) {
+      margin-right: 0;
+    }
+  }
+}
+
+.film-img {
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 100%;
+    max-width: 293px;
+    height: 398px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 100%;
+    max-width: 274px;
+    height: 398px;
+  }
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.film-name {
+  @media screen and (max-width: 158px) {
+    text-align: center;
+  }
+  margin: 0;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.film-stat {
+  @media screen and (max-width: 158px) {
+    text-align: center;
+  }
+  @media screen and (min-width: 159px) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.film-description {
+  margin: 0;
+  margin-right: 10px;
+  color: #ff6b01;
+}
+
+// стили секции пагинатора
+.paginationSection {
+  @media screen and (max-width: 767px) {
+    padding-top: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    padding-top: 0px;
+  }
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+// Стили контейнеров пагинатора
+.paginator {
+  display: flex;
+  align-items: center;
+}
+
+.pages-container {
+  display: flex;
+  align-items: center;
+}

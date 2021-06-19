@@ -1,0 +1,294 @@
+.header {
+  background-size: cover;
+  background-repeat: no-repeat;
+  @media screen and (max-width: 767px) {
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url('./images/hedmob.jpg');
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url('./images/hedtab.jpg');
+  }
+  @media screen and (min-width: 1024px) {
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url('./images/hed.jpg');
+  }
+  text-align: center;
+}
+
+.container.nav-container {
+  display: inline-block;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    max-width: 280px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 100%;
+    max-width: 618px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 100%;
+    max-width: 882px;
+  }
+  height: 230px;
+}
+
+// Стили блока логотипа и навигации
+.header-container {
+  @media screen and (max-width: 184px) {
+    text-align: center;
+  }
+  @media screen and (min-width: 185px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  padding-top: 46px;
+  margin-bottom: 40px;
+}
+
+
+.logo-header {
+  @media screen and (max-width: 184px) {
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
+}
+  @media screen and (min-width: 768px) {
+  .input-wrap {
+    width: 100%;
+    max-width: 200px;
+    position: relative;
+  }
+}
+
+.logo-link {
+  @media screen and (min-width: 185px) {
+    display: flex;
+    align-items: center;
+  }
+  text-decoration: none;
+}
+
+.logo-link:hover .logo-svg {
+  fill: #ff6b01;
+  transition: 0.4s;
+}
+
+.logo-svg {
+  stroke: #818181;
+}
+
+.logo-text {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 0 0 0 10px;
+    font-weight: 500;
+    font-size: 30px;
+  }
+  @media screen and (min-width: 1024px) {
+    transition: 0.4s;
+  }
+  color: white;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  padding-top: 10px;
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+
+.nav-list .home-link {
+  position: relative;
+  font-size: 12px;
+  padding-bottom: 3px;
+  color: white;
+  transition: 0.4s;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.home-link.current::after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ff6b08;
+  left: 0;
+  bottom: 0;
+  border-radius: 0px;
+}
+
+.nav-list .library-link {
+  position: relative;
+  font-size: 12px;
+  padding-bottom: 3px;
+  color: white;
+  transition: 0.4s;
+}
+
+.library-link {
+  border: none;
+  background: transparent;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.library-link.current::after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ff6b08;
+  left: 0;
+  bottom: 0;
+  border-radius: 0px;
+  text-decoration: none;
+}
+
+// Стили блока инпута
+.input-container {
+  @media screen and (max-width: 767px) {
+    position: relative;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    display: flex;
+    justify-content: center;
+    height: 20px;
+  }
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20px;
+  }
+}
+
+.header-form {
+  border-bottom: 0.5px solid;
+  border-color: white;
+  text-align: left;
+}
+
+.header-input {
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    max-width: 280px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    max-width: 336px;
+  }
+  @media screen and (min-width: 1024px) {
+    max-width: 336px;
+  }
+  height: 20px;
+  border: 0;
+  background-color: transparent;
+  color: white;
+  outline: none;
+}
+
+.header-input::placeholder {
+  color: rgb(153, 151, 151);
+}
+
+.input-icon {
+  stroke: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 4.5px;
+}
+
+// Стили блока текста ошибки
+.error-span {
+  display: block;
+  padding-top: 22px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ff001b;
+}
+
+// Стили блока навигации страницы "Моя библиотека"
+.myLibraryNavigationBox_js {
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 768px) {
+    padding-top: 10px;
+  }
+}
+
+.myLibraryNavigationList {
+  display: inline-flex;
+  list-style: none;
+  @media screen and (min-width: 185px) {
+    padding-top: 45px;
+  }
+}
+
+.myLibraryNavigationListItem:not(:last-child) {
+  @media screen and (max-width: 240px) {
+    margin-right: 10px;
+  }
+  @media screen and (min-width: 241px) {
+    margin-right: 20px;
+  }
+}
+
+.header-library {
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+  ),
+  url('./images/hed-lib.jpg');
+}
+
+.home-link:hover,
+.library-link:hover,
+.logo-text:hover {
+  color: #ff6b01;
+  transition: 0.4s;
+}
+
+.link-current {
+  text-decoration: none;
+}
+
+.hideBtns {
+  display: none;
+  pointer-events: none;
+}
